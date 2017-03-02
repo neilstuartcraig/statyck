@@ -1,0 +1,12 @@
+{
+    "sourceDir": "themes/default",
+    "settings": 
+    {
+        "title": "TheDotProduct",
+        "strapline": "Open Sourcery",
+        "scheme": "https:",
+        "hostname": "statyck.thedotproduct.org",
+        "baseURI": "", 
+        "createAbsoluteHRefs": false
+    }
+}

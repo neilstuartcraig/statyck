@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>{{theme.title}} - Page {{indexes.current}}</title>
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+
+<body>
+
+<header>
+  {{{pagesIndexHTML}}}
+</header>
+
+
+  <ul>
+  
+  {{#each items.items ~}}
+    <li>
+      <a href="{{absoluteURI}}">
+        {{title}}
+      </a>
+    </li>
+  
+  {{~/each}}
+  </ul>
+
+
+  {{indexes.current}} of {{indexes.total}}
+
+  {{# if indexMetadata.isNotFirstIndex }}
+    <a href="{{indexMetadata.prevIndexHRef}}">
+      Prev
+    </a>
+  {{/if}}
+  
+  {{# if indexMetadata.isNotLastIndex }}
+    <a href="{{indexMetadata.nextIndexHRef}}">
+      Next
+    </a>
+  {{/if}}
+
+</body>
+</html>
