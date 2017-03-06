@@ -1,5 +1,9 @@
 # statyck changelog
 
+## v1.0.3
+* Fix: Readme file
+* Fix: Fix Travis setup
+
 ## v1.0.2
 * Fix: Move logic to get userland config (statyck & theme) to a fn
 

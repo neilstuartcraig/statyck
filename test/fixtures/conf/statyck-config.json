@@ -1,0 +1,16 @@
+{
+    "general":
+    {
+        "outputBaseDir": "output"
+    },
+    "posts":
+    {   
+        "contentSourceFilenameExtension": ".md",
+        "numPostsPerIndexPage": 10
+    },
+    "pages":
+    {       
+        "contentSourceFilenameExtension": ".md",
+        "numPostsPerIndexPage": -1
+    }
+}
