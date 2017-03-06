@@ -8,6 +8,7 @@ import createOutputFiles from "./functions/create-output-files.js";
 import createIndexes from "./functions/create-indexes.js";
 import copyAssetFiles from "./functions/copy-asset-files.js";
 import createOutputSymlink from "./functions/create-output-symlink.js";
+import getUserConfig from "./functions/get-user-config.js";
 
 module.exports =
 {
@@ -18,5 +19,6 @@ module.exports =
     createOutputFiles: createOutputFiles, 
     createIndexes: createIndexes, 
     copyAssetFiles: copyAssetFiles, 
-    createOutputSymlink: createOutputSymlink 
+    createOutputSymlink: createOutputSymlink,
+    getUserConfig: getUserConfig 
 };

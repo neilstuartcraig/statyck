@@ -30,6 +30,10 @@ var _createOutputSymlink = require("./functions/create-output-symlink.js");
 
 var _createOutputSymlink2 = _interopRequireDefault(_createOutputSymlink);
 
+var _getUserConfig = require("./functions/get-user-config.js");
+
+var _getUserConfig2 = _interopRequireDefault(_getUserConfig);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = {
@@ -40,5 +44,6 @@ module.exports = {
     createOutputFiles: _createOutputFiles2.default,
     createIndexes: _createIndexes2.default,
     copyAssetFiles: _copyAssetFiles2.default,
-    createOutputSymlink: _createOutputSymlink2.default
+    createOutputSymlink: _createOutputSymlink2.default,
+    getUserConfig: _getUserConfig2.default
 };

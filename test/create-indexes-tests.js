@@ -210,7 +210,7 @@ test.cb("createIndexes with valid inputs (verify that additionalContext doesnt o
   });
 });
 
-test.cb("createIndexes with valid inputs (with output file)", (t) =>
+test.cb("createIndexes with valid inputs (with output file 1)", (t) =>
 {
      // Args
     const items = 
