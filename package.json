@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
@@ -27,7 +27,9 @@
     "post-install": "./scripts/post-install.js",
     "preversion": "npm run build && npm test && npm run create-report",
     "version": "npm run vuln-scan && git add -A",
-    "postversion": "git push --follow-tags && npm publish"
+    "postversion": "git push --follow-tags && npm publish",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -44,7 +46,8 @@
     "fs-extra": "^2.0.0",
     "handlebars": "^4.0.6",
     "marked": "^0.3.6",
-    "yargs": "^7.0.1"
+    "yargs": "^7.0.1",
+    "snyk": "^1.25.2"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -58,7 +61,7 @@
     "fs-extra": "^2.0.0",
     "nyc": "^10.1.2",
     "recursive-readdir": "^2.1.1",
-    "rimraf": "^2.6.1",
-    "snyk": "^1.25.2"
-  }
+    "rimraf": "^2.6.1"
+  },
+  "snyk": true
 }

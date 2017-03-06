@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.0.6
+* Fix: Remove incorrectly configured Snyk config - Temporary measure!
+
 ## v1.0.5
 * Fix: brittle (dependent on timestamp of files) tests for `listFiles()` and `createIndexes()`
 
