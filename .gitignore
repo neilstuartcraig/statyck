@@ -1,5 +1,6 @@
-node_modules
+node_modules/
 .nyc_output
 npm-debug.log
-coverage
+coverage/
 config/statyck-config.js
+output/

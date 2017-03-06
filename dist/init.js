@@ -6,9 +6,9 @@ var _path = require("path");
 
 var _path2 = _interopRequireDefault(_path);
 
-var _createOutputDir = require("./lib/functions/create-output-dir.js");
+var _createDirRec = require("./lib/functions/create-dir-rec.js");
 
-var _createOutputDir2 = _interopRequireDefault(_createOutputDir);
+var _createDirRec2 = _interopRequireDefault(_createDirRec);
 
 var _copyAssetFiles = require("./lib/functions/copy-asset-files.js");
 
@@ -28,7 +28,7 @@ function init(projectBaseDirectory, callback) {
 
     // create ./config/ dir
     const configDir = _path2.default.join(projectBaseDirectory, "conf");
-    (0, _createOutputDir2.default)(configDir, CDErr => {
+    (0, _createDirRec2.default)(configDir, CDErr => {
         if (CDErr) {
             return callback(CDErr);
         }

@@ -6,9 +6,9 @@ var _path = require("path");
 
 var _path2 = _interopRequireDefault(_path);
 
-var _createOutputDir = require("./create-output-dir.js");
+var _createDirRec = require("./create-dir-rec.js");
 
-var _createOutputDir2 = _interopRequireDefault(_createOutputDir);
+var _createDirRec2 = _interopRequireDefault(_createDirRec);
 
 var _createOutputFile = require("./create-output-file.js");
 
@@ -44,7 +44,7 @@ function createOutputFiles(template, items, context, outputDir, callback) {
     }
 
     // Create the output (destination) directory, if it doesn't exist
-    (0, _createOutputDir2.default)(outputDir, CODErr => {
+    (0, _createDirRec2.default)(outputDir, CODErr => {
         if (CODErr) {
             return callback(CODErr);
         }

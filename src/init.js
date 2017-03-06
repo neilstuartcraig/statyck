@@ -5,7 +5,7 @@ import path from "path";
 
 
 // Deps - local
-import createOutputDir from "./lib/functions/create-output-dir.js"; // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
+import createDirRec from "./lib/functions/create-dir-rec.js"; // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
 // import createOutputFile from "./functions/create-output-file.js";
 import copyAssetFiles from "./lib/functions/copy-asset-files.js";
 
@@ -14,7 +14,7 @@ function init(projectBaseDirectory: string, callback: Function)
 {
     // create ./config/ dir
     const configDir = path.join(projectBaseDirectory, "conf");
-    createOutputDir(configDir, (CDErr) => 
+    createDirRec(configDir, (CDErr) => 
     {  
         if(CDErr)
         {

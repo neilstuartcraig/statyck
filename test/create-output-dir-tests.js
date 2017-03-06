@@ -9,14 +9,14 @@ import test from "ava";
 import rimraf from "rimraf";
 
 // Local deps
-import createOutputDir from "../src/lib/functions/create-output-dir.js";
+import createDirRec from "../src/lib/functions/create-dir-rec.js";
 
-test.cb("createOutputDir with valid outputDir", (t) =>
+test.cb("createDirRec with valid outputDir", (t) =>
 {
     // Args
     const outputDir = path.resolve(__dirname, "fixtures", "test-dir");
 
-    createOutputDir(outputDir, (CODErr) => 
+    createDirRec(outputDir, (CODErr) => 
     {
         t.is(CODErr === null, true, "CODErr must be null");
 
@@ -35,14 +35,14 @@ test.cb("createOutputDir with valid outputDir", (t) =>
 });
 
 // invalid args
-test.cb("createOutputDir with invalid outputDir === null", (t) =>
+test.cb("createDirRec with invalid outputDir === null", (t) =>
 {
     // Args
     const outputDir = null;
 
     const error = t.throws(() => 
     {
-        createOutputDir(outputDir, () => 
+        createDirRec(outputDir, () => 
         {
         });
     }, TypeError);

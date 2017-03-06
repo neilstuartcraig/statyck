@@ -6,7 +6,7 @@ import path from "path";
 // 3rd party deps
 
 // Local deps
-import createOutputDir from "./create-output-dir.js";
+import createDirRec from "./create-dir-rec.js";
 import createOutputFile from "./create-output-file.js";
 
 
@@ -15,7 +15,7 @@ import createOutputFile from "./create-output-file.js";
 function createOutputFiles(template: string, items: Array, context: Object, outputDir: string, callback: Function)
 {
     // Create the output (destination) directory, if it doesn't exist
-    createOutputDir(outputDir, (CODErr) => 
+    createDirRec(outputDir, (CODErr) => 
     {
         if(CODErr)
         {
