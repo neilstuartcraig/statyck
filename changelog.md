@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.0.8
+* Fix: Actually change the `travis.yml` file WRT 1.0.7
+
 ## v1.0.7
 * Fix: Amend Travis config to remove old versions of Node (pre 6) & add info to readme
 
