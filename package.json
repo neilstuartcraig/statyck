@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {

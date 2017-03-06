@@ -34,7 +34,12 @@ test.cb("listFiles with valid inputs", (t) =>
   listFiles(pathToFiles, fileExtensions, (err, res) =>
   {
     t.is(err === null, true, "'err' must be null");
-    t.deepEqual(res, expectedOutput, "'res' must be deepEqual to ${expectedOutput}");
+
+    const resSort = res.sort();
+    const EOSort = expectedOutput.sort();
+
+    // t.deepEqual(res, expectedOutput, "'res' must be deepEqual to ${expectedOutput}");
+    t.deepEqual(resSort, EOSort, "'res' must be deepEqual to ${expectedOutput}");
 
     t.end();
   });
