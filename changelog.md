@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.0.9
+* Fix: Correct `package.json` links
+
 ## v1.0.8
 * Fix: Actually change the `travis.yml` file WRT 1.0.7
 

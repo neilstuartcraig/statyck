@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
@@ -33,15 +33,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gh-username/statyck"
+    "url": "https://github.com/neilstuartcraig/statyck"
   },
   "keywords": [],
   "author": "neilstuartcraig neil.craig@thedotproduct.org",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gh-username/statyck/issues"
+    "url": "https://github.com/neilstuartcraig/statyck/issues"
   },
-  "homepage": "https://github.com/gh-username/statyck#readme",
+  "homepage": "https://github.com/neilstuartcraig/statyck#readme",
   "dependencies": {
     "fs-extra": "^2.0.0",
     "handlebars": "^4.0.6",
