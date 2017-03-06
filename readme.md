@@ -12,6 +12,7 @@ A super simple, markdown-based, static blog generator.
 
 ## Prerequisites
 * [NodeJS](https://nodejs.org/) and [NPM](https://www.npmjs.com/) (NPM is included in the installers from nodejs.org)
+    * Node version 6+ is required
 * Optional: [Yarn]()
 
 

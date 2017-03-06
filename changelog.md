@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.0.7
+* Fix: Amend Travis config to remove old versions of Node (pre 6) & add info to readme
+
 ## v1.0.6
 * Fix: Remove incorrectly configured Snyk config - Temporary measure!
 
