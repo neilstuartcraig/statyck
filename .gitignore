@@ -4,3 +4,4 @@ npm-debug.log
 coverage/
 config/statyck-config.js
 output/
+yarn-error.log

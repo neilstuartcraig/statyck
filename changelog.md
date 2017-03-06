@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.0.4
+* Fix: Remove incorrect ref to `yargs` in dev dependencies
+
 ## v1.0.3
 * Fix: Readme file
 * Fix: Fix Travis setup
