@@ -1,5 +1,9 @@
 # statyck changelog
 
+## v1.1.0
+* Feature: Disambiguate userland config dir - renamed to `statyck-config/`
+* Fix: Untidy working/testing directories - move to `output/`
+
 ## v1.0.9
 * Fix: Correct `package.json` links
 

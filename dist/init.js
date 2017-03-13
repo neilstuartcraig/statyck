@@ -27,7 +27,7 @@ function init(projectBaseDirectory, callback) {
     }
 
     // create ./config/ dir
-    const configDir = _path2.default.join(projectBaseDirectory, "conf");
+    const configDir = _path2.default.join(projectBaseDirectory, "statyck-config");
     (0, _createDirRec2.default)(configDir, CDErr => {
         if (CDErr) {
             return callback(CDErr);

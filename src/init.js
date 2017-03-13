@@ -13,7 +13,7 @@ import copyAssetFiles from "./lib/functions/copy-asset-files.js";
 function init(projectBaseDirectory: string, callback: Function)
 {
     // create ./config/ dir
-    const configDir = path.join(projectBaseDirectory, "conf");
+    const configDir = path.join(projectBaseDirectory, "statyck-config");
     createDirRec(configDir, (CDErr) => 
     {  
         if(CDErr)

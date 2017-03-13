@@ -1,6 +1,5 @@
 "use strict";
 
-// import getConfig from "./functions/get-config.js"; //UNUSED
 import listFiles from "./functions/list-files.js";
 import getFilesContent from "./functions/get-files-content.js";
 import getTemplateFile from "./functions/get-template-file.js";

@@ -23,7 +23,7 @@ function getTemplateFile(themeDir, contentType, callback) {
         throw new TypeError("Value of argument \"callback\" violates contract.\n\nExpected:\nFunction\n\nGot:\n" + _inspect(callback));
     }
 
-    const templateFilename = `${ contentType }.html`;
+    const templateFilename = `${contentType}.html`;
     const templatePathAndFilename = _path2.default.resolve(themeDir, templateFilename);
 
     _fs2.default.readFile(templatePathAndFilename, (FSAErr, file) => {

@@ -2,6 +2,5 @@ node_modules/
 .nyc_output
 npm-debug.log
 coverage/
-config/statyck-config.js
 output/
 yarn-error.log

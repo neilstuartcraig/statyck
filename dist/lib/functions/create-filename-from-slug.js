@@ -9,7 +9,7 @@ function createFilenameFromSlug(slug, callback) {
         throw new TypeError("Value of argument \"callback\" violates contract.\n\nExpected:\nFunction\n\nGot:\n" + _inspect(callback));
     }
 
-    const filename = `${ slug }.html`;
+    const filename = `${slug}.html`;
     return callback(filename);
 }
 

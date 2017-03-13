@@ -59,7 +59,7 @@ _yargs2.default.usage("usage: $0 <command>").command("init", "initialise Statyck
         console.log(pkg.version);
         process.exit(0);
     } else {
-        console.error(`Sorry, couldn't get the Statyck version number from ${ projectBaseDirectory }/package.json - does the file exist?`);
+        console.error(`Sorry, couldn't get the Statyck version number from ${projectBaseDirectory}/package.json - does the file exist?`);
         process.exit(1);
     }
 }).wrap(_yargs2.default.terminalWidth()).demandCommand(1, `Please specify a commamd (see above for details and usage example)`).help("help").argv;

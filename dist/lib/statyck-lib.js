@@ -1,7 +1,5 @@
 "use strict";
 
-// import getConfig from "./functions/get-config.js"; //UNUSED
-
 var _listFiles = require("./functions/list-files.js");
 
 var _listFiles2 = _interopRequireDefault(_listFiles);

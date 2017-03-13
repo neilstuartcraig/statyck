@@ -22,10 +22,12 @@ function getUserConfig(projectBaseDirectory, callback) {
 
     try {
         // Core Statyck config file - likely users won't need to edit this
-        const coreConfigFilename = _path2.default.join(projectBaseDirectory, "conf", "statyck-config.json");
+        const coreConfigFilename = _path2.default.join(projectBaseDirectory, "statyck-config", "statyck-config.json");
 
         // Theme config file - users will need to edit this to some extent - e.g. setting title etc. hence it's JSON, should make it easier for users and theme installers alike
-        const themeConfigFilename = _path2.default.join(projectBaseDirectory, "conf", "theme-config.json");
+        const themeConfigFilename = _path2.default.join(projectBaseDirectory, "statyck-config", "theme-config.json");
+
+        // NOTE: Could add source-control/deploy config here too
 
         // NOTE: import can't be used here as it's mandatory that its path is static (can't contain vars) & that it's used in the top-level scope
         let coreConfig = require(coreConfigFilename);

@@ -21,8 +21,8 @@ test.cb("getUserConfig with valid inputs", (t) =>
     const projectBaseDirectory = path.resolve(__dirname, "fixtures");
 
     // Outputs
-    const statykConfig = require("./fixtures/conf/statyck-config.json");
-    const themeConfig = require("./fixtures/conf/theme-config.json");
+    const statykConfig = require("./fixtures/statyck-config/statyck-config.json");
+    const themeConfig = require("./fixtures/statyck-config/theme-config.json");
     let expectedOutput = statykConfig;
     expectedOutput.theme = themeConfig;
 
@@ -30,7 +30,7 @@ test.cb("getUserConfig with valid inputs", (t) =>
     {
         t.is(err, null, "err must be null");
 
-        t.deepEqual(res, expectedOutput, "res must exactly equal expectedOutput");''
+        t.deepEqual(res, expectedOutput, "res must exactly equal expectedOutput");
 
         t.end();
     });

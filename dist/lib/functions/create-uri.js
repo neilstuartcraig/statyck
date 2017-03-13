@@ -50,15 +50,15 @@ function createURI(scheme, hostname, basePath, outputDirectory, slug, createAbso
                 const outputTLD = parsedPath.base;
 
                 // Second, create just the hostname and path section of the URI, replacing any instances of >1 / with a single /
-                const URN = `${ basePath }/${ outputTLD }/${ slug }.html`.replace(/\/{2,}/g, "/");
+                const URN = `${basePath}/${outputTLD}/${slug}.html`.replace(/\/{2,}/g, "/");
 
                 if (createAbsoluteURI === true) {
                     // Now join the above to the scheme and we're done
-                    const URIEnd = `${ hostname }/${ URN }`.replace(/\/{2,}/g, "/");
+                    const URIEnd = `${hostname}/${URN}`.replace(/\/{2,}/g, "/");
 
-                    URI = `${ scheme }//${ URIEnd }`;
+                    URI = `${scheme}//${URIEnd}`;
                 } else {
-                    URI = `${ URN }`;
+                    URI = `${URN}`;
                 }
             } else {
                 err = new TypeError("Argument 'slug' must be a non-empty string");

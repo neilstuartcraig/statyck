@@ -13,7 +13,7 @@ function createIndexFilename(indeXNumber, pathPrefix, callback) {
         throw new TypeError("Value of argument \"callback\" violates contract.\n\nExpected:\nFunction\n\nGot:\n" + _inspect(callback));
     }
 
-    let indexFilename = indeXNumber > 0 ? `index-${ indeXNumber }.html` : "index.html";
+    let indexFilename = indeXNumber > 0 ? `index-${indeXNumber}.html` : "index.html";
 
     let indexFilenameAndPath = indexFilename;
 
