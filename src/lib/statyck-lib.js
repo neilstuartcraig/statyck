@@ -5,7 +5,7 @@ import getFilesContent from "./functions/get-files-content.js";
 import getTemplateFile from "./functions/get-template-file.js";
 import createOutputFiles from "./functions/create-output-files.js";
 import createIndexes from "./functions/create-indexes.js";
-import copyAssetFiles from "./functions/copy-asset-files.js";
+import recCopyFiles from "./functions/rec-copy-files.js";
 import createOutputSymlink from "./functions/create-output-symlink.js";
 import getUserConfig from "./functions/get-user-config.js";
 
@@ -17,7 +17,7 @@ module.exports =
     getTemplateFile: getTemplateFile, 
     createOutputFiles: createOutputFiles, 
     createIndexes: createIndexes, 
-    copyAssetFiles: copyAssetFiles, 
+    recCopyFiles: recCopyFiles, 
     createOutputSymlink: createOutputSymlink,
     getUserConfig: getUserConfig 
 };

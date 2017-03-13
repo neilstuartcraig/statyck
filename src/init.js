@@ -7,7 +7,7 @@ import path from "path";
 // Deps - local
 import createDirRec from "./lib/functions/create-dir-rec.js"; // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
 // import createOutputFile from "./functions/create-output-file.js";
-import copyAssetFiles from "./lib/functions/copy-asset-files.js";
+import recCopyFiles from "./lib/functions/rec-copy-files.js";
 
 
 function init(projectBaseDirectory: string, callback: Function)
@@ -24,7 +24,7 @@ function init(projectBaseDirectory: string, callback: Function)
         // we'll do a simple copy of the config "template" (they're not really templates) files
         const configTemplateDir = path.join(__dirname, "..", "config-templates");
 
-        copyAssetFiles(configTemplateDir, configDir, (CAErr) => 
+        recCopyFiles(configTemplateDir, configDir, (CAErr) => 
         {
             if(CAErr)
             {
@@ -34,7 +34,7 @@ function init(projectBaseDirectory: string, callback: Function)
             // Create content-source dir
             const contentSourceSourceDir = path.join(__dirname, "..", "content-source");
             const contentSourceDestinationDir = path.join(projectBaseDirectory, "content-source");
-            copyAssetFiles(contentSourceSourceDir, contentSourceDestinationDir, (CSErr) => 
+            recCopyFiles(contentSourceSourceDir, contentSourceDestinationDir, (CSErr) => 
             {
                 if(CSErr)
                 {
@@ -44,7 +44,7 @@ function init(projectBaseDirectory: string, callback: Function)
                 // Copy default theme into proj dir
                 const themeSourceDir = path.join(__dirname, "..", "themes", "default");
                 const themeDestinationDir = path.join(projectBaseDirectory, "themes", "default");
-                copyAssetFiles(themeSourceDir, themeDestinationDir, (TErr) => 
+                recCopyFiles(themeSourceDir, themeDestinationDir, (TErr) => 
                 {
                     return callback(TErr);
                 });

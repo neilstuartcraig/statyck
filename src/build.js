@@ -70,7 +70,7 @@ function build(projectBaseDirectory: string, callback: Function)
                         // Copy static assets for pages to the output dir
                         const pagesAssetsSourcePath = path.join(contentSourceBaseDir, "pages", "assets");
                         const pagesAssetsDestinationPath = path.join(versionOutputBaseDir, "pages", "assets");
-                        statyck.copyAssetFiles(pagesAssetsSourcePath, pagesAssetsDestinationPath, (PaCAFErr) => 
+                        statyck.recCopyFiles(pagesAssetsSourcePath, pagesAssetsDestinationPath, (PaCAFErr) => 
                         {
                             if(PaCAFErr)
                             {
@@ -178,7 +178,7 @@ function build(projectBaseDirectory: string, callback: Function)
                                                             // Copy static assets for posts to the output dir
                                                             const postsAssetsSourcePath = path.join(contentSourceBaseDir, "posts", "assets");
                                                             const postsAssetsDestinationPath = path.join(versionOutputBaseDir, "posts", "assets");
-                                                            statyck.copyAssetFiles(postsAssetsSourcePath, postsAssetsDestinationPath, (PCAFErr) => 
+                                                            statyck.recCopyFiles(postsAssetsSourcePath, postsAssetsDestinationPath, (PCAFErr) => 
                                                             {
                                                                 if(PCAFErr)
                                                                 {
@@ -189,7 +189,7 @@ function build(projectBaseDirectory: string, callback: Function)
                                                                 // Copy static assets for the theme to the output dir
                                                                 const themeAssetsSourcePath = path.resolve(projectBaseDirectory, statyckConfig.theme.sourceDir, "assets");
                                                                 const themeAssetsDestinationPath = path.join(versionOutputBaseDir, "assets");
-                                                                statyck.copyAssetFiles(themeAssetsSourcePath, themeAssetsDestinationPath, (TCAFErr) => 
+                                                                statyck.recCopyFiles(themeAssetsSourcePath, themeAssetsDestinationPath, (TCAFErr) => 
                                                                 {
                                                                     if(TCAFErr)
                                                                     {

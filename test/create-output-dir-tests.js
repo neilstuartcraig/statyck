@@ -24,7 +24,7 @@ test.cb("createDirRec with valid outputDir", (t) =>
         {
             if(EErr)
             {
-                console.error(`Error creating output dir: ${EErr.message}`);
+                // console.error(`Error creating output dir: ${EErr.message}`);
                 rimraf(outputDir, () => 
                 {
                     t.end();

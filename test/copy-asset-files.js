@@ -1,7 +1,7 @@
 "use strict";
 
 /*
-Unit tests for function copyAssetFiles
+Unit tests for function recCopyFiles
 */
 
 // Core deps
@@ -13,11 +13,11 @@ import recursive from "recursive-readdir";
 import rimraf from "rimraf";
 
 // Local deps
-import {copyAssetFiles} from "../src/lib/statyck-lib.js";
+import {recCopyFiles} from "../src/lib/statyck-lib.js";
 
 
 // Valid inputs:
-test.cb("copyAssetFiles with valid inputs", (t) =>
+test.cb("recCopyFiles with valid inputs", (t) =>
 {
 
 // NOTE: This test *could* be expanded upon by also checking file contents are identical  
@@ -25,7 +25,7 @@ test.cb("copyAssetFiles with valid inputs", (t) =>
     let sourceDir = path.resolve(__dirname, "fixtures", "assets", "src");
     let destDir = path.resolve(__dirname, "fixtures", "assets", "dest");
 
-    copyAssetFiles(sourceDir, destDir, (err) =>
+    recCopyFiles(sourceDir, destDir, (err) =>
     {
         t.is(err === null, true, "'err' must be null");
 
@@ -67,12 +67,12 @@ test.cb("copyAssetFiles with valid inputs", (t) =>
     });
 });
 
-test.cb("copyAssetFiles with valid input types but non-existant source", (t) =>
+test.cb("recCopyFiles with valid input types but non-existant source", (t) =>
 {
     let sourceDir = path.resolve(__dirname, "fixtures", "dir-which-does-not-exist");
     let destDir = path.resolve(__dirname, "fixtures", "assets", "dest");
 
-    copyAssetFiles(sourceDir, destDir, (err) =>
+    recCopyFiles(sourceDir, destDir, (err) =>
     {
         t.is(err instanceof Error, true, `err must be an instance of Error`);
 
@@ -82,14 +82,14 @@ test.cb("copyAssetFiles with valid input types but non-existant source", (t) =>
 
 
 // Invalid inputs
-test.cb("copyAssetFiles with invalid inputs (sourceDir == null)", (t) =>
+test.cb("recCopyFiles with invalid inputs (sourceDir == null)", (t) =>
 {
     let sourceDir = null;
     let destDir = "some-path";
     
     const error = t.throws(() => 
     {
-        copyAssetFiles(sourceDir, destDir, () => 
+        recCopyFiles(sourceDir, destDir, () => 
         {
         });
     }, TypeError);
@@ -98,14 +98,14 @@ test.cb("copyAssetFiles with invalid inputs (sourceDir == null)", (t) =>
     t.end();  
 });
 
-test.cb("copyAssetFiles with invalid inputs (destDir == null)", (t) =>
+test.cb("recCopyFiles with invalid inputs (destDir == null)", (t) =>
 {
     let sourceDir = "some-path";
     let destDir = null;
 
     const error = t.throws(() => 
     {
-        copyAssetFiles(sourceDir, destDir, () => 
+        recCopyFiles(sourceDir, destDir, () => 
         {
         });
     }, TypeError);

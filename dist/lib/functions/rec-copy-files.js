@@ -1,68 +1,32 @@
 "use strict";
 
-// Core deps
+// Deps - 3rd party
 
-var _path = require("path");
+var _fsExtra = require("fs-extra");
 
-var _path2 = _interopRequireDefault(_path);
-
-var _createDirRec = require("./lib/functions/create-dir-rec.js");
-
-var _createDirRec2 = _interopRequireDefault(_createDirRec);
-
-var _recCopyFiles = require("./lib/functions/rec-copy-files.js");
-
-var _recCopyFiles2 = _interopRequireDefault(_recCopyFiles);
+var _fsExtra2 = _interopRequireDefault(_fsExtra);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Deps - local
-function init(projectBaseDirectory, callback) {
-    if (!(typeof projectBaseDirectory === 'string')) {
-        throw new TypeError("Value of argument \"projectBaseDirectory\" violates contract.\n\nExpected:\nstring\n\nGot:\n" + _inspect(projectBaseDirectory));
+function recCopyFiles(sourceDir, destDir, callback) {
+    if (!(typeof sourceDir === 'string')) {
+        throw new TypeError("Value of argument \"sourceDir\" violates contract.\n\nExpected:\nstring\n\nGot:\n" + _inspect(sourceDir));
+    }
+
+    if (!(typeof destDir === 'string')) {
+        throw new TypeError("Value of argument \"destDir\" violates contract.\n\nExpected:\nstring\n\nGot:\n" + _inspect(destDir));
     }
 
     if (!(typeof callback === 'function')) {
         throw new TypeError("Value of argument \"callback\" violates contract.\n\nExpected:\nFunction\n\nGot:\n" + _inspect(callback));
     }
 
-    // create ./config/ dir
-    const configDir = _path2.default.join(projectBaseDirectory, "statyck-config");
-    (0, _createDirRec2.default)(configDir, CDErr => {
-        if (CDErr) {
-            return callback(CDErr);
-        }
-
-        // we'll do a simple copy of the config "template" (they're not really templates) files
-        const configTemplateDir = _path2.default.join(__dirname, "..", "config-templates");
-
-        (0, _recCopyFiles2.default)(configTemplateDir, configDir, CAErr => {
-            if (CAErr) {
-                return callback(CAErr);
-            }
-
-            // Create content-source dir
-            const contentSourceSourceDir = _path2.default.join(__dirname, "..", "content-source");
-            const contentSourceDestinationDir = _path2.default.join(projectBaseDirectory, "content-source");
-            (0, _recCopyFiles2.default)(contentSourceSourceDir, contentSourceDestinationDir, CSErr => {
-                if (CSErr) {
-                    return callback(CSErr);
-                }
-
-                // Copy default theme into proj dir
-                const themeSourceDir = _path2.default.join(__dirname, "..", "themes", "default");
-                const themeDestinationDir = _path2.default.join(projectBaseDirectory, "themes", "default");
-                (0, _recCopyFiles2.default)(themeSourceDir, themeDestinationDir, TErr => {
-                    return callback(TErr);
-                });
-            });
-        });
+    _fsExtra2.default.copy(sourceDir, destDir, CErr => {
+        return callback(CErr);
     });
-} // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
-// import createOutputFile from "./functions/create-output-file.js";
+}
 
-
-module.exports = init;
+module.exports = recCopyFiles;
 
 function _inspect(input, depth) {
     const maxDepth = 4;

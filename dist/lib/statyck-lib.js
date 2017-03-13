@@ -20,9 +20,9 @@ var _createIndexes = require("./functions/create-indexes.js");
 
 var _createIndexes2 = _interopRequireDefault(_createIndexes);
 
-var _copyAssetFiles = require("./functions/copy-asset-files.js");
+var _recCopyFiles = require("./functions/rec-copy-files.js");
 
-var _copyAssetFiles2 = _interopRequireDefault(_copyAssetFiles);
+var _recCopyFiles2 = _interopRequireDefault(_recCopyFiles);
 
 var _createOutputSymlink = require("./functions/create-output-symlink.js");
 
@@ -41,7 +41,7 @@ module.exports = {
     getTemplateFile: _getTemplateFile2.default,
     createOutputFiles: _createOutputFiles2.default,
     createIndexes: _createIndexes2.default,
-    copyAssetFiles: _copyAssetFiles2.default,
+    recCopyFiles: _recCopyFiles2.default,
     createOutputSymlink: _createOutputSymlink2.default,
     getUserConfig: _getUserConfig2.default
 };
