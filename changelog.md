@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.2.1
+* Fix: Broken TravisCI build (probably due to adding engines directive to pkg.json)
+
 ## v1.2.0
 * Feature: Add Statyck (app) config file to avoid hard-coded values in the app
 
