@@ -6,6 +6,9 @@ import path from "path";
 // Deps - local
 import statyck from "./lib/statyck-lib.js"; // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
 
+// App config (not user config - fixed location)
+import {production as appConfig} from "../config/statyck-app-config.js";
+
 function build(projectBaseDirectory: string, callback: Function)
 {
     statyck.getUserConfig(projectBaseDirectory, (GUCErr, statyckConfig) => 
@@ -19,7 +22,7 @@ function build(projectBaseDirectory: string, callback: Function)
         const currentTimestamp = new Date().getTime();
 
         // Calculate the content source path
-        const contentSourceBaseDir = path.resolve(projectBaseDirectory, "content-source");
+        const contentSourceBaseDir = path.resolve(projectBaseDirectory, appConfig.contentSourceBaseDir);
 
         // Calculate the output directory path - this will be used as a basis for all other paths, see below ...
         const outputBaseDir = path.resolve(projectBaseDirectory, statyckConfig.general.outputBaseDir);
@@ -28,8 +31,8 @@ function build(projectBaseDirectory: string, callback: Function)
         const versionOutputBaseDir = path.join(outputBaseDir, currentTimestamp.toString(10));
 
         // List the pages files
-        const pagesSourcePath = path.join(contentSourceBaseDir, "pages");
-        statyck.listFiles(pagesSourcePath, statyckConfig.pages.contentSourceFilenameExtension, (listPagesErr, pagesFiles) => 
+        const pagesSourceDirectory = path.join(contentSourceBaseDir, appConfig.pagesSourceDirectory);
+        statyck.listFiles(pagesSourceDirectory, statyckConfig.pages.contentSourceFilenameExtension, (listPagesErr, pagesFiles) => 
         {
             if(listPagesErr)
             {
@@ -39,8 +42,8 @@ function build(projectBaseDirectory: string, callback: Function)
             }
 
             // build the pages
-            const pagesOutputDirectory = path.join(versionOutputBaseDir, "pages");
-            statyck.getFilesContent(pagesSourcePath, pagesFiles, statyckConfig.pages.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.pages.numPostsPerIndexPage, pagesOutputDirectory, (getPagesErr, pages) => 
+            const pagesOutputDirectory = path.join(versionOutputBaseDir, appConfig.pagesOutputDirectory);
+            statyck.getFilesContent(pagesSourceDirectory, pagesFiles, statyckConfig.pages.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.pages.numPostsPerIndexPage, pagesOutputDirectory, (getPagesErr, pages) => 
             {
                 if(getPagesErr)
                 {
@@ -50,7 +53,7 @@ function build(projectBaseDirectory: string, callback: Function)
 
     // TODO: it'd be more sensible/obvious to calc the name of the file and then use a lib fn to get the file content - we'd drop a fn too
                 // Read in the pages index template
-                statyck.getTemplateFile(statyckConfig.theme.sourceDir, "pages-index", (pageIndexGTFErr, pagesIndexTemplate) => // eslint-disable-line consistent-return
+                statyck.getTemplateFile(statyckConfig.theme.sourceDir, appConfig.pagesIndexTemplateFilename, (pageIndexGTFErr, pagesIndexTemplate) => // eslint-disable-line consistent-return
                 {
                     if(pageIndexGTFErr)
                     {        
@@ -68,9 +71,9 @@ function build(projectBaseDirectory: string, callback: Function)
                         }
 
                         // Copy static assets for pages to the output dir
-                        const pagesAssetsSourcePath = path.join(contentSourceBaseDir, "pages", "assets");
-                        const pagesAssetsDestinationPath = path.join(versionOutputBaseDir, "pages", "assets");
-                        statyck.recCopyFiles(pagesAssetsSourcePath, pagesAssetsDestinationPath, (PaCAFErr) => 
+                        const pagesAssetsSourceDirectory = path.join(contentSourceBaseDir, appConfig.pagesSourceDirectory, appConfig.pagesAssetsSourceDirectory);
+                        const pagesAssetsDestinationPath = path.join(versionOutputBaseDir, appConfig.pagesOutputDirectory, appConfig.pagesAssetsDestinationDirectory);
+                        statyck.recCopyFiles(pagesAssetsSourceDirectory, pagesAssetsDestinationPath, (PaCAFErr) => 
                         {
                             if(PaCAFErr)
                             {
@@ -79,7 +82,7 @@ function build(projectBaseDirectory: string, callback: Function)
                             }
 
                             // Read in the page template
-                            statyck.getTemplateFile(statyckConfig.theme.sourceDir, "page", (pageGTFErr, pageTemplate) => // eslint-disable-line consistent-return
+                            statyck.getTemplateFile(statyckConfig.theme.sourceDir, appConfig.pagesTemplateFilename, (pageGTFErr, pageTemplate) => // eslint-disable-line consistent-return
                             {
                                 if(pageGTFErr)
                                 {        
@@ -106,8 +109,8 @@ function build(projectBaseDirectory: string, callback: Function)
                     // POSTS -------------------------------------------------------------                
 
                                     // List the blog post files
-                                    const postsSourcePath = path.join(contentSourceBaseDir, "posts");
-                                    statyck.listFiles(postsSourcePath, statyckConfig.posts.contentSourceFilenameExtension, (listPostsErr, blogPostFiles) => 
+                                    const postsSourceDirectory = path.join(contentSourceBaseDir, appConfig.postsSourceDirectory);
+                                    statyck.listFiles(postsSourceDirectory, statyckConfig.posts.contentSourceFilenameExtension, (listPostsErr, blogPostFiles) => 
                                     {
                                         if(listPostsErr)
                                         {
@@ -117,8 +120,8 @@ function build(projectBaseDirectory: string, callback: Function)
                                         }
 
                                         // Process posts
-                                        const postsOutputDirectory = path.join(versionOutputBaseDir, "posts");
-                                        statyck.getFilesContent(postsSourcePath, blogPostFiles, statyckConfig.posts.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.posts.numPostsPerIndexPage, postsOutputDirectory, (getBlogPostsErr, blogPosts) => 
+                                        const postsOutputDirectory = path.join(versionOutputBaseDir, appConfig.postsOutputDirectory);
+                                        statyck.getFilesContent(postsSourceDirectory, blogPostFiles, statyckConfig.posts.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.posts.numPostsPerIndexPage, postsOutputDirectory, (getBlogPostsErr, blogPosts) => 
                                         {
                                             if(getBlogPostsErr)
                                             {
@@ -128,7 +131,7 @@ function build(projectBaseDirectory: string, callback: Function)
 
 
                                             // Read in the post template
-                                            statyck.getTemplateFile(statyckConfig.theme.sourceDir, "post", (postGTFErr, postTemplate) => // eslint-disable-line consistent-return
+                                            statyck.getTemplateFile(statyckConfig.theme.sourceDir, appConfig.postsTemplateFilename, (postGTFErr, postTemplate) => // eslint-disable-line consistent-return
                                             {
                                                 if(postGTFErr)
                                                 {        
@@ -154,7 +157,7 @@ function build(projectBaseDirectory: string, callback: Function)
                                                     }
                                                     
                                                     // Read in the posts index template
-                                                    statyck.getTemplateFile(statyckConfig.theme.sourceDir, "posts-index", (postsIndexGTFErr, postsIndexTemplate) => // eslint-disable-line consistent-return
+                                                    statyck.getTemplateFile(statyckConfig.theme.sourceDir, appConfig.postsIndexTemplateFilename, (postsIndexGTFErr, postsIndexTemplate) => // eslint-disable-line consistent-return
                                                     {
                                                         if(postsIndexGTFErr)
                                                         {        
@@ -176,9 +179,9 @@ function build(projectBaseDirectory: string, callback: Function)
                                                             }
 
                                                             // Copy static assets for posts to the output dir
-                                                            const postsAssetsSourcePath = path.join(contentSourceBaseDir, "posts", "assets");
-                                                            const postsAssetsDestinationPath = path.join(versionOutputBaseDir, "posts", "assets");
-                                                            statyck.recCopyFiles(postsAssetsSourcePath, postsAssetsDestinationPath, (PCAFErr) => 
+                                                            const postsAssetsSourceDirectory = path.join(contentSourceBaseDir, appConfig.postsSourceDirectory, appConfig.postsAssetsSourceDirectory);
+                                                            const postsAssetsDestinationPath = path.join(versionOutputBaseDir, appConfig.postsOutputDirectory, appConfig.postsAssetsDestinationDirectory);
+                                                            statyck.recCopyFiles(postsAssetsSourceDirectory, postsAssetsDestinationPath, (PCAFErr) => 
                                                             {
                                                                 if(PCAFErr)
                                                                 {
@@ -187,9 +190,9 @@ function build(projectBaseDirectory: string, callback: Function)
                                                                 }
 
                                                                 // Copy static assets for the theme to the output dir
-                                                                const themeAssetsSourcePath = path.resolve(projectBaseDirectory, statyckConfig.theme.sourceDir, "assets");
-                                                                const themeAssetsDestinationPath = path.join(versionOutputBaseDir, "assets");
-                                                                statyck.recCopyFiles(themeAssetsSourcePath, themeAssetsDestinationPath, (TCAFErr) => 
+                                                                const themeAssetsSourceDirectory = path.resolve(projectBaseDirectory, statyckConfig.theme.sourceDir, appConfig.themeAssetsSourceDirectory);
+                                                                const themeAssetsDestinationPath = path.join(versionOutputBaseDir, appConfig.themeAssetsDestinationDirectory);
+                                                                statyck.recCopyFiles(themeAssetsSourceDirectory, themeAssetsDestinationPath, (TCAFErr) => 
                                                                 {
                                                                     if(TCAFErr)
                                                                     {
@@ -198,7 +201,7 @@ function build(projectBaseDirectory: string, callback: Function)
                                                                     }
 
                                                                     // Create a symlink to the output dir as a universal alias e.g. 'latest' -> 12312243141234
-                                                                    const symlink = path.join(outputBaseDir, "latest");
+                                                                    const symlink = path.join(outputBaseDir, appConfig.outputDirectorySymlink);
 
                                                                     statyck.createOutputSymlink(versionOutputBaseDir, symlink, (symlinkErr) => 
                                                                     {

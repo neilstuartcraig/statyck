@@ -14,9 +14,12 @@ var _recCopyFiles = require("./lib/functions/rec-copy-files.js");
 
 var _recCopyFiles2 = _interopRequireDefault(_recCopyFiles);
 
+var _statyckAppConfig = require("../config/statyck-app-config.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Deps - local
+// NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
+// import createOutputFile from "./functions/create-output-file.js";
 function init(projectBaseDirectory, callback) {
     if (!(typeof projectBaseDirectory === 'string')) {
         throw new TypeError("Value of argument \"projectBaseDirectory\" violates contract.\n\nExpected:\nstring\n\nGot:\n" + _inspect(projectBaseDirectory));
@@ -27,14 +30,14 @@ function init(projectBaseDirectory, callback) {
     }
 
     // create ./config/ dir
-    const configDir = _path2.default.join(projectBaseDirectory, "statyck-config");
+    const configDir = _path2.default.join(projectBaseDirectory, _statyckAppConfig.production.userlandConfigDestinationDirectory);
     (0, _createDirRec2.default)(configDir, CDErr => {
         if (CDErr) {
             return callback(CDErr);
         }
 
         // we'll do a simple copy of the config "template" (they're not really templates) files
-        const configTemplateDir = _path2.default.join(__dirname, "..", "config-templates");
+        const configTemplateDir = _path2.default.join(__dirname, "..", _statyckAppConfig.production.userlandConfigTemplateSourceDirectory);
 
         (0, _recCopyFiles2.default)(configTemplateDir, configDir, CAErr => {
             if (CAErr) {
@@ -42,24 +45,28 @@ function init(projectBaseDirectory, callback) {
             }
 
             // Create content-source dir
-            const contentSourceSourceDir = _path2.default.join(__dirname, "..", "content-source");
-            const contentSourceDestinationDir = _path2.default.join(projectBaseDirectory, "content-source");
+            const contentSourceSourceDir = _path2.default.join(__dirname, "..", _statyckAppConfig.production.contentSourceBaseDir);
+            const contentSourceDestinationDir = _path2.default.join(projectBaseDirectory, _statyckAppConfig.production.contentSourceBaseDir);
             (0, _recCopyFiles2.default)(contentSourceSourceDir, contentSourceDestinationDir, CSErr => {
                 if (CSErr) {
                     return callback(CSErr);
                 }
 
                 // Copy default theme into proj dir
-                const themeSourceDir = _path2.default.join(__dirname, "..", "themes", "default");
-                const themeDestinationDir = _path2.default.join(projectBaseDirectory, "themes", "default");
+                const themeSourceDir = _path2.default.join(__dirname, "..", _statyckAppConfig.production.themesSourceDirectory, _statyckAppConfig.production.defaultThemeDirectory);
+                const themeDestinationDir = _path2.default.join(projectBaseDirectory, _statyckAppConfig.production.themesSourceDirectory, _statyckAppConfig.production.defaultThemeDirectory);
                 (0, _recCopyFiles2.default)(themeSourceDir, themeDestinationDir, TErr => {
                     return callback(TErr);
                 });
             });
         });
     });
-} // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
-// import createOutputFile from "./functions/create-output-file.js";
+}
+
+// App config (not user config - fixed location)
+
+
+// Deps - local
 
 
 module.exports = init;

@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.2.0
+* Feature: Add Statyck (app) config file to avoid hard-coded values in the app
+
 ## v1.1.1
 * Fix: Poor name of `copyAssetFiles()`, renamed to `recCopyFiles()`
 

@@ -1,10 +1,14 @@
 {
   "name": "statyck",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
     "statyck": "dist/bin.js"
+  },
+  "engines": 
+  {
+     "node" : ">=6.0.0" 
   },
   "config": {
     "force": true

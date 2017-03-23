@@ -10,10 +10,11 @@ var _statyckLib = require("./lib/statyck-lib.js");
 
 var _statyckLib2 = _interopRequireDefault(_statyckLib);
 
+var _statyckAppConfig = require("../config/statyck-app-config.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
-
+// Deps - local
 function build(projectBaseDirectory, callback) {
     if (!(typeof projectBaseDirectory === 'string')) {
         throw new TypeError("Value of argument \"projectBaseDirectory\" violates contract.\n\nExpected:\nstring\n\nGot:\n" + _inspect(projectBaseDirectory));
@@ -32,7 +33,7 @@ function build(projectBaseDirectory, callback) {
         const currentTimestamp = new Date().getTime();
 
         // Calculate the content source path
-        const contentSourceBaseDir = _path2.default.resolve(projectBaseDirectory, "content-source");
+        const contentSourceBaseDir = _path2.default.resolve(projectBaseDirectory, _statyckAppConfig.production.contentSourceBaseDir);
 
         // Calculate the output directory path - this will be used as a basis for all other paths, see below ...
         const outputBaseDir = _path2.default.resolve(projectBaseDirectory, statyckConfig.general.outputBaseDir);
@@ -41,8 +42,8 @@ function build(projectBaseDirectory, callback) {
         const versionOutputBaseDir = _path2.default.join(outputBaseDir, currentTimestamp.toString(10));
 
         // List the pages files
-        const pagesSourcePath = _path2.default.join(contentSourceBaseDir, "pages");
-        _statyckLib2.default.listFiles(pagesSourcePath, statyckConfig.pages.contentSourceFilenameExtension, (listPagesErr, pagesFiles) => {
+        const pagesSourceDirectory = _path2.default.join(contentSourceBaseDir, _statyckAppConfig.production.pagesSourceDirectory);
+        _statyckLib2.default.listFiles(pagesSourceDirectory, statyckConfig.pages.contentSourceFilenameExtension, (listPagesErr, pagesFiles) => {
             if (listPagesErr) {
                 // NOTE: Trying to make the output more user-friendly but have kept listPagesErr as an Error for the mo at least
                 console.error(listPagesErr.message);
@@ -50,8 +51,8 @@ function build(projectBaseDirectory, callback) {
             }
 
             // build the pages
-            const pagesOutputDirectory = _path2.default.join(versionOutputBaseDir, "pages");
-            _statyckLib2.default.getFilesContent(pagesSourcePath, pagesFiles, statyckConfig.pages.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.pages.numPostsPerIndexPage, pagesOutputDirectory, (getPagesErr, pages) => {
+            const pagesOutputDirectory = _path2.default.join(versionOutputBaseDir, _statyckAppConfig.production.pagesOutputDirectory);
+            _statyckLib2.default.getFilesContent(pagesSourceDirectory, pagesFiles, statyckConfig.pages.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.pages.numPostsPerIndexPage, pagesOutputDirectory, (getPagesErr, pages) => {
                 if (getPagesErr) {
                     console.error(getPagesErr.message);
                     process.exit(1);
@@ -59,7 +60,7 @@ function build(projectBaseDirectory, callback) {
 
                 // TODO: it'd be more sensible/obvious to calc the name of the file and then use a lib fn to get the file content - we'd drop a fn too
                 // Read in the pages index template
-                _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, "pages-index", (pageIndexGTFErr, pagesIndexTemplate) => // eslint-disable-line consistent-return
+                _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, _statyckAppConfig.production.pagesIndexTemplateFilename, (pageIndexGTFErr, pagesIndexTemplate) => // eslint-disable-line consistent-return
                 {
                     if (pageIndexGTFErr) {
                         console.error(pageIndexGTFErr.message);
@@ -74,16 +75,16 @@ function build(projectBaseDirectory, callback) {
                         }
 
                         // Copy static assets for pages to the output dir
-                        const pagesAssetsSourcePath = _path2.default.join(contentSourceBaseDir, "pages", "assets");
-                        const pagesAssetsDestinationPath = _path2.default.join(versionOutputBaseDir, "pages", "assets");
-                        _statyckLib2.default.recCopyFiles(pagesAssetsSourcePath, pagesAssetsDestinationPath, PaCAFErr => {
+                        const pagesAssetsSourceDirectory = _path2.default.join(contentSourceBaseDir, _statyckAppConfig.production.pagesSourceDirectory, _statyckAppConfig.production.pagesAssetsSourceDirectory);
+                        const pagesAssetsDestinationPath = _path2.default.join(versionOutputBaseDir, _statyckAppConfig.production.pagesOutputDirectory, _statyckAppConfig.production.pagesAssetsDestinationDirectory);
+                        _statyckLib2.default.recCopyFiles(pagesAssetsSourceDirectory, pagesAssetsDestinationPath, PaCAFErr => {
                             if (PaCAFErr) {
                                 console.error(PaCAFErr.message);
                                 process.exit(1);
                             }
 
                             // Read in the page template
-                            _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, "page", (pageGTFErr, pageTemplate) => // eslint-disable-line consistent-return
+                            _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, _statyckAppConfig.production.pagesTemplateFilename, (pageGTFErr, pageTemplate) => // eslint-disable-line consistent-return
                             {
                                 if (pageGTFErr) {
                                     console.error(pageGTFErr.message);
@@ -104,8 +105,8 @@ function build(projectBaseDirectory, callback) {
                                     // POSTS -------------------------------------------------------------                
 
                                     // List the blog post files
-                                    const postsSourcePath = _path2.default.join(contentSourceBaseDir, "posts");
-                                    _statyckLib2.default.listFiles(postsSourcePath, statyckConfig.posts.contentSourceFilenameExtension, (listPostsErr, blogPostFiles) => {
+                                    const postsSourceDirectory = _path2.default.join(contentSourceBaseDir, _statyckAppConfig.production.postsSourceDirectory);
+                                    _statyckLib2.default.listFiles(postsSourceDirectory, statyckConfig.posts.contentSourceFilenameExtension, (listPostsErr, blogPostFiles) => {
                                         if (listPostsErr) {
                                             // NOTE: Trying to make the output more user-friendly but have kept listPostsErr as an Error for the mo at least
                                             console.error(listPostsErr.message);
@@ -113,15 +114,15 @@ function build(projectBaseDirectory, callback) {
                                         }
 
                                         // Process posts
-                                        const postsOutputDirectory = _path2.default.join(versionOutputBaseDir, "posts");
-                                        _statyckLib2.default.getFilesContent(postsSourcePath, blogPostFiles, statyckConfig.posts.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.posts.numPostsPerIndexPage, postsOutputDirectory, (getBlogPostsErr, blogPosts) => {
+                                        const postsOutputDirectory = _path2.default.join(versionOutputBaseDir, _statyckAppConfig.production.postsOutputDirectory);
+                                        _statyckLib2.default.getFilesContent(postsSourceDirectory, blogPostFiles, statyckConfig.posts.contentSourceFilenameExtension, statyckConfig.theme.settings, statyckConfig.posts.numPostsPerIndexPage, postsOutputDirectory, (getBlogPostsErr, blogPosts) => {
                                             if (getBlogPostsErr) {
                                                 console.error(getBlogPostsErr.message);
                                                 process.exit(1);
                                             }
 
                                             // Read in the post template
-                                            _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, "post", (postGTFErr, postTemplate) => // eslint-disable-line consistent-return
+                                            _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, _statyckAppConfig.production.postsTemplateFilename, (postGTFErr, postTemplate) => // eslint-disable-line consistent-return
                                             {
                                                 if (postGTFErr) {
                                                     console.error(postGTFErr.message);
@@ -142,7 +143,7 @@ function build(projectBaseDirectory, callback) {
                                                     }
 
                                                     // Read in the posts index template
-                                                    _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, "posts-index", (postsIndexGTFErr, postsIndexTemplate) => // eslint-disable-line consistent-return
+                                                    _statyckLib2.default.getTemplateFile(statyckConfig.theme.sourceDir, _statyckAppConfig.production.postsIndexTemplateFilename, (postsIndexGTFErr, postsIndexTemplate) => // eslint-disable-line consistent-return
                                                     {
                                                         if (postsIndexGTFErr) {
                                                             console.error(postsIndexGTFErr.message);
@@ -159,25 +160,25 @@ function build(projectBaseDirectory, callback) {
                                                             }
 
                                                             // Copy static assets for posts to the output dir
-                                                            const postsAssetsSourcePath = _path2.default.join(contentSourceBaseDir, "posts", "assets");
-                                                            const postsAssetsDestinationPath = _path2.default.join(versionOutputBaseDir, "posts", "assets");
-                                                            _statyckLib2.default.recCopyFiles(postsAssetsSourcePath, postsAssetsDestinationPath, PCAFErr => {
+                                                            const postsAssetsSourceDirectory = _path2.default.join(contentSourceBaseDir, _statyckAppConfig.production.postsSourceDirectory, _statyckAppConfig.production.postsAssetsSourceDirectory);
+                                                            const postsAssetsDestinationPath = _path2.default.join(versionOutputBaseDir, _statyckAppConfig.production.postsOutputDirectory, _statyckAppConfig.production.postsAssetsDestinationDirectory);
+                                                            _statyckLib2.default.recCopyFiles(postsAssetsSourceDirectory, postsAssetsDestinationPath, PCAFErr => {
                                                                 if (PCAFErr) {
                                                                     console.error(PCAFErr.message);
                                                                     process.exit(1);
                                                                 }
 
                                                                 // Copy static assets for the theme to the output dir
-                                                                const themeAssetsSourcePath = _path2.default.resolve(projectBaseDirectory, statyckConfig.theme.sourceDir, "assets");
-                                                                const themeAssetsDestinationPath = _path2.default.join(versionOutputBaseDir, "assets");
-                                                                _statyckLib2.default.recCopyFiles(themeAssetsSourcePath, themeAssetsDestinationPath, TCAFErr => {
+                                                                const themeAssetsSourceDirectory = _path2.default.resolve(projectBaseDirectory, statyckConfig.theme.sourceDir, _statyckAppConfig.production.themeAssetsSourceDirectory);
+                                                                const themeAssetsDestinationPath = _path2.default.join(versionOutputBaseDir, _statyckAppConfig.production.themeAssetsDestinationDirectory);
+                                                                _statyckLib2.default.recCopyFiles(themeAssetsSourceDirectory, themeAssetsDestinationPath, TCAFErr => {
                                                                     if (TCAFErr) {
                                                                         console.error(TCAFErr.message);
                                                                         process.exit(1);
                                                                     }
 
                                                                     // Create a symlink to the output dir as a universal alias e.g. 'latest' -> 12312243141234
-                                                                    const symlink = _path2.default.join(outputBaseDir, "latest");
+                                                                    const symlink = _path2.default.join(outputBaseDir, _statyckAppConfig.production.outputDirectorySymlink);
 
                                                                     _statyckLib2.default.createOutputSymlink(versionOutputBaseDir, symlink, symlinkErr => {
                                                                         if (symlinkErr) {
@@ -204,9 +205,9 @@ function build(projectBaseDirectory, callback) {
             });
         });
     });
-}
+} // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd
 
-// Deps - local
+// App config (not user config - fixed location)
 
 
 module.exports = build;
