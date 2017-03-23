@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.2.2
+* Patch: Add OSX builds to Travis
+
 ## v1.2.1
 * Fix: Broken TravisCI build (probably due to adding engines directive to pkg.json)
 
