@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.7
+* Fix: Add quickstart guide to readme
+
 ## v1.4.6
 * Patch: Add note to `statyck local` to say "hit ctrl+c to stop local server"
 

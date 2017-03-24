@@ -9,6 +9,37 @@ A super simple, markdown-based, static blog generator.
 `statyck` takes [Markdown](https://en.wikipedia.org/wiki/Markdown) files in a known directory/folder structure and generates a (template-able, via [Handlebars](http://handlebarsjs.com/)) set of blog posts and pages, each with optional assets (images etc.).
 
 
+## Quickstart
+If you're familiar with node installation and the command line (and you're on a *nix-like system), run this in your shell:
+
+```
+cd 
+mkdir statyck-blog
+cd $_
+npm install statyck --production --global
+statyck init
+statyck build
+statyck local
+```
+
+You should then see a message (roughly) as follows:
+
+```
+Local server running at http://127.0.0.1:8080/
+```
+
+So you can now open `http://127.0.0.1:8080` in your browser and you'll see a very basic, starter website.
+
+You can then modify your content inside `./content-source/` then run:
+
+```
+statyck build
+statyck local
+```
+
+And test in your browser again. Once you're happy, you can copy your website files from `./output/` to your web server/service.
+
+
 
 ## Prerequisites
 * [NodeJS](https://nodejs.org/) and [NPM](https://www.npmjs.com/) (NPM is included in the installers from nodejs.org)
