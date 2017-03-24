@@ -52,7 +52,7 @@ function local(projectBaseDirectory: string, callback: Function)
         });
         
         // Issue a (hopefully useful message to the user so they can click on it or copy/paste)
-        console.log(`Local server running at http://127.0.0.1:${statyckConfig.general.localServerPort}/`);
+        console.log(`Local server running at http://127.0.0.1:${statyckConfig.general.localServerPort}/ - hit ctrl+c to stop`);
 
         server.listen(statyckConfig.general.localServerPort);
     });
