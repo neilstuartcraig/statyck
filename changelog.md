@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.3
+* Fix: Incorrect path prefix in template configs
+
 ## v1.4.2
 * Fix: Remove `statyck-config/` from remote
 
