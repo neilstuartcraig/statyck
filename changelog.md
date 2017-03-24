@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.5
+* Fix: Optimise Travis CI build time
+
 ## v1.4.4
 * Fix: Tidy local server (remove `console.log` and add comment)
 
