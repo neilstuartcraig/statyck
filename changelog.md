@@ -1,5 +1,9 @@
 # statyck changelog
 
+## v1.3.0
+* Feature: Very basic local HTTP server added. Run it via `statyck local`
+* Fix: Add `statyck-config/` to `.gitignore` as it's an artifact of local testing/dev and not needed for users
+
 ## v1.2.2
 * Patch: Add OSX builds to Travis
 

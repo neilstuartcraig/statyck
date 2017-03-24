@@ -1,7 +1,8 @@
 {
     "general":
     {
-        "outputBaseDir": "output"
+        "outputBaseDir": "output",
+        "localServerPort": 8080 
     },
     "posts":
     {   

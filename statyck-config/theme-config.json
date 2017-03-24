@@ -6,7 +6,7 @@
         "strapline": "Blog Strapline",
         "scheme": "https:",
         "hostname": "www.example.org",
-        "baseURI": "/blog", 
+        "baseURI": "", 
         "createAbsoluteHRefs": false
     }
 }

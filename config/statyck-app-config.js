@@ -25,6 +25,8 @@ const production =
     postsTemplateFilename: "post", // The name of the index template filename (without the implicit filename extension of .html) for posts (this must not include a path, filename only)
     postsAssetsSourceDirectory: "assets", // Directory name for source assets dir inside `postsSourceDirectory`
     postsAssetsDestinationDirectory: "assets", // Directory name for destination assets dir inside `statyckConfig.general.outputBaseDir`
+    postsIndexFilename: "index.html", // The name of the index filename we'll create for post indexes (this must not include a path, filename only)
+    
 
     // Theme
     themesSourceDirectory: "themes", // The base directory (relative to the project root directory) which contains available Statyck themes
@@ -35,10 +37,9 @@ const production =
     // Output
     outputDirectorySymlink: "latest", // The name of the symlink inside `statyckConfig.general.outputBaseDir which links to the latest-built set of files
 
-    // Config
+    // Config files
     userlandConfigDestinationDirectory: "statyck-config", // Directory (relative to project root directory) which will be created by init to copy the below userland config templates
     userlandConfigTemplateSourceDirectory: "config-templates" // Directory (relative to this codebase root directory) in which userland config templates are stored
-
 };
 
 module.exports["production"] = production;

@@ -17,6 +17,10 @@ var _init = require("./init.js");
 
 var _init2 = _interopRequireDefault(_init);
 
+var _local = require("./local.js");
+
+var _local2 = _interopRequireDefault(_local);
+
 var _yargs = require("yargs");
 
 var _yargs2 = _interopRequireDefault(_yargs);
@@ -24,12 +28,12 @@ var _yargs2 = _interopRequireDefault(_yargs);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Get project base directory
-const projectBaseDirectory = process.cwd();
-
-// Deps - 3rd party
 
 
 // Deps - local
+const projectBaseDirectory = process.cwd();
+
+// Deps - 3rd party
 
 
 _yargs2.default.usage("usage: $0 <command>").command("init", "initialise Statyck for usage (creates and populates a config file in the current directory/folder)", () => {
@@ -45,6 +49,15 @@ _yargs2.default.usage("usage: $0 <command>").command("init", "initialise Statyck
     (0, _build2.default)(projectBaseDirectory, buildErr => {
         if (buildErr) {
             console.error(buildErr.message);
+            process.exit(1);
+        }
+
+        process.exit(0);
+    });
+}).command("local", "Serve your Statyck website locally so you can test it before you publish", () => {
+    (0, _local2.default)(projectBaseDirectory, initErr => {
+        if (initErr) {
+            console.error(initErr.message);
             process.exit(1);
         }
 

@@ -8,6 +8,7 @@ import path from "path";
 // Deps - local
 import build from "./build.js";
 import init from "./init.js";
+import local from "./local.js";
 
 // Deps - 3rd party
 import yargs from "yargs";
@@ -38,6 +39,19 @@ yargs
         if(buildErr)
         {
             console.error(buildErr.message);
+            process.exit(1);
+        }
+
+        process.exit(0);
+    });
+})
+.command("local", "Serve your Statyck website locally so you can test it before you publish", () => 
+{
+    local(projectBaseDirectory, (initErr) => 
+    {
+        if(initErr)
+        {
+            console.error(initErr.message);
             process.exit(1);
         }
 
