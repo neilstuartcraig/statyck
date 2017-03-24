@@ -25,6 +25,7 @@ function local(projectBaseDirectory: string, callback: Function)
             // Remove any query strings from the request URL
             const requestURLNoQS = req.url.replace(/\?.*/g, "");
 
+            // Remap requests for / or "" to index filename
             let requestedPath = requestURLNoQS;
             if(requestURLNoQS === "/" || requestURLNoQS === "")
             {

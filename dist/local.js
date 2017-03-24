@@ -38,33 +38,33 @@ function local(projectBaseDirectory, callback) {
         }
 
         const server = _http2.default.createServer((req, res) => {
-
-            // NOTE: This needs filtering to avoid dir traversal
-            // NOTE: need to handle / as index.html (from config)
-
             // Remove any query strings from the request URL
             const requestURLNoQS = req.url.replace(/\?.*/g, "");
 
+            // Remap requests for / or "" to index filename
             let requestedPath = requestURLNoQS;
             if (requestURLNoQS === "/" || requestURLNoQS === "") {
                 requestedPath = _statyckAppConfig.production.postsIndexFilename;
             }
 
+            // NOTE: I *think* (counter to what seems obvious) this is *not* susceptible to path traversal - at least that didn't work in my testing
             const reqPath = _path2.default.join(projectBaseDirectory, statyckConfig.general.outputBaseDir, _statyckAppConfig.production.outputDirectorySymlink, requestedPath);
-            console.log(`p: ${reqPath}`);
+
             _fs2.default.readFile(reqPath, (FSErr, data) => {
+                // Probably a bad assumption but we'll 404 any failures
                 if (FSErr) {
                     res.statusCode = 404;
                     res.end();
                 } else {
                     const response = data.toString("utf8");
-
                     res.end(response);
                 }
             });
         });
 
+        // Issue a (hopefully useful message to the user so they can click on it or copy/paste)
         console.log(`Local server running at http://127.0.0.1:${statyckConfig.general.localServerPort}/`);
+
         server.listen(statyckConfig.general.localServerPort);
     });
 } // NOTE: Path is relative to build dir (dist/) - local because lib is babel'd

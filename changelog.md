@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.4
+* Fix: Tidy local server (remove `console.log` and add comment)
+
 ## v1.4.3
 * Fix: Incorrect path prefix in template configs
 
