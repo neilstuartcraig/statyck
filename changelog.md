@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.2
+* Fix: Remove `statyck-config/` from remote
+
 ## v1.4.1
 * Fix: Complete missing docs (readme) on local web server
 
