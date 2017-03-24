@@ -64,6 +64,19 @@ statyck build
 Note: the built files will be in `./output` 
 
 
+### Testing your website locally
+
+Statyck `v1.4.0` added a very simple local web server which you can use to test your website before you deploy it. Just run:
+
+```
+statyck local
+```
+
+**WARNING** This web server is absolutely *NOT* intended for any other usage than local testing, it's not at all resilient/stable and potentialy/probably insecure! Do not ever run a public service with this web server. For this reason, the web server binds to `127.0.0.1` *only* - this is *not* configurable for a good reason! Sorry for the rant but this is important.
+
+You can amend the port (`:8080` by default) on which the local web server is run (e.g. if you have something running on/bound to `127.0.0.1:8080` already).
+
+
 ### Deploying your blog/website
 `statyck` doesn't currently handle deployments but you could, for example deploy to...:
 

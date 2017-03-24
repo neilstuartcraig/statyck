@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.1
+* Fix: Complete missing docs (readme) on local web server
+
 ## v1.4.0
 * Feature: Very basic local HTTP server added. Run it via `statyck local`
 * Fix: Add `statyck-config/` to `.gitignore` as it's an artifact of local testing/dev and not needed for users
