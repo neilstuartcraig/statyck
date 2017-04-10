@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.4.8
+* Fix: Delete PoC directory as it's no longer needed
+
 ## v1.4.7
 * Fix: Add quickstart guide to readme
 
