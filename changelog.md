@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.5.0
+* Feature: Move default theme to dedicated repo/package (https://github.com/neilstuartcraig/statyck-theme-default / statyck-theme-default), adjust readme accordingly
+
 ## v1.4.9
 * Fix: Pagination wording
 * Fix: Finalise default theme (simple form)

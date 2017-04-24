@@ -15,7 +15,7 @@ import {production as appConfig} from "../config/statyck-app-config.js";
 
 function init(projectBaseDirectory: string, callback: Function)
 {
-    // create ./config/ dir
+    // create ./statyck-config/ dir in the blog root dir
     const configDir = path.join(projectBaseDirectory, appConfig.userlandConfigDestinationDirectory);
     createDirRec(configDir, (CDErr) => 
     {  
@@ -43,14 +43,6 @@ function init(projectBaseDirectory: string, callback: Function)
                 {
                     return callback(CSErr);
                 }
-
-                // Copy default theme into proj dir
-                const themeSourceDir = path.join(__dirname, "..", appConfig.themesSourceDirectory, appConfig.defaultThemeDirectory);
-                const themeDestinationDir = path.join(projectBaseDirectory, appConfig.themesSourceDirectory, appConfig.defaultThemeDirectory);
-                recCopyFiles(themeSourceDir, themeDestinationDir, (TErr) => 
-                {
-                    return callback(TErr);
-                });
             });
         });
     });

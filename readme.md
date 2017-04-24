@@ -17,10 +17,13 @@ cd
 mkdir statyck-blog
 cd $_
 npm install statyck --production --global
+npm install statyck-theme-default --production >> /dev/null 2>&1
 statyck init
 statyck build
 statyck local
 ```
+
+(note: you may need to omit the `>> /dev/null 2>&1` on non-*nix OS's e.g. Windows)
 
 You should then see a message (roughly) as follows:
 
@@ -62,6 +65,31 @@ Note: For development use, omit the `global` command (i.e. run `yarn add statyck
 npm install statyck --production --global
 ```  
 Note: For development use, omit the `--production --global` flags  
+
+
+## Themes
+Statyck uses themes to format the processed Markdown output into HTML, these themes are based on [Handlebars](http://handlebarsjs.com/).
+
+Statyck is _not_ bundled with a theme as of v1.5.0, instead you must install a theme, you can install the default theme via (assuming you're currently in the directory/folder which you'd like to host your new blog):
+
+```
+npm install statyck-theme-default --production >> /dev/null 2>&1
+```
+
+(note: you may need to omit the `>> /dev/null 2>&1` on non-*nix OS's e.g. Windows)
+
+It is not recommended to install themes globally as that makes running multiple blogs using different versions of themes more complex.
+
+
+Themes are separated out from Statyck itself for several reasons, e.g.:
+
+* Theme authors can then fork the [default theme](https://github.com/neilstuartcraig/statyck-theme-default) as a starting point
+* Theme updates are independent of Statyck core which means that the update flow is simpler
+* The default theme can be uninstalled or never installed which saves a few bytes
+
+
+### Theme development
+As noted above, a good starting point is to fork the [default theme](https://github.com/neilstuartcraig/statyck-theme-default) and modify it to your needs. See the docs there for more info.
 
 
 ## Using statyck
