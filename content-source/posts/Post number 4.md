@@ -6,9 +6,6 @@ Nunc aliquam risus dictum, varius justo sed, commodo lacus. Sed sed maximus est.
 
 This is a badger:  
 ![Badger](./assets/images/badger.jpg "Yep, it's a badger JPEG!")  
-![Badger](./assets/images/badger2.jpg "Yep, it's a badger JPEG! 2")  
-![Badger](./assets/images/badger.png "Yep, it's a badger PNG!")
-
 
 Cras scelerisque urna eros, eu tincidunt lorem imperdiet at. Aenean pellentesque porta mi. Proin nisl mi, ultricies a justo nec, lobortis commodo ligula. Morbi venenatis molestie elit, sit amet commodo lacus ullamcorper nec. Pellentesque nisi justo, elementum eu gravida ut, volutpat in massa. Vestibulum eget mattis ex. Pellentesque eleifend pulvinar accumsan. Nullam suscipit commodo pharetra. Praesent elementum, massa eget mollis commodo, libero neque aliquam purus, a posuere dui odio quis arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
