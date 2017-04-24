@@ -1,0 +1,36 @@
+.index ul
+{
+    display: flex;
+    flex-direction: column;
+}
+.index li
+{
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    flex-direction: column;
+}
+.index_date
+{
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.index_pagination
+{
+    padding: 1rem 1.5rem 0.25rem 1.5rem;
+
+    display: flex;
+    flex-direction: row;
+
+    color: #999;
+}
+.index_pagination a
+{
+    color: #999;
+}
+.index_pagination_num
+{
+    margin-right: 0.5rem;
+}

@@ -29,7 +29,6 @@ function createIndexes(items: Array, numberOfItemsPerIndexPage: number, template
 
         itemsArray.map((item, currentIndexNum) => 
         {
-
 // TODO: sort the path prefix from config         
             createIndexMetadata(currentIndexNum, totalNumItems, "", (indexMetadata) => 
             {
@@ -37,7 +36,7 @@ function createIndexes(items: Array, numberOfItemsPerIndexPage: number, template
                 {
                     items: item,
                     indexMetadata: indexMetadata,
-                    config: themeSettings
+                    theme: themeSettings
                 };
 
                 // Copy in additional context (excluding any clashes with existing context data)

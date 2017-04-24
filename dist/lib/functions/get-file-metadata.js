@@ -34,17 +34,16 @@ function getFileMetadata(filename, callback) {
         }
 
         _fs2.default.stat(filename, (statErr, stat) => {
-            let CTS = new Date(stat.ctime).getTime();
+            let CTS = new Date(stat.birthtime).getTime(); // NOTE: stat.birthtime might be OSX-specific
             if (CTS) {
                 ret.dateCreated.timestamp = CTS;
-                // ret.dateCreated.string =  new Date(CTS).toISOString()
-                ret.dateCreated.string = new Date(CTS).toLocaleString();
+                ret.dateCreated.string = new Date(CTS).toUTCString();
             }
 
             let MTS = new Date(stat.mtime).getTime();
             if (MTS) {
                 ret.dateModified.timestamp = MTS;
-                ret.dateModified.string = new Date(MTS).toLocaleString();
+                ret.dateModified.string = new Date(MTS).toUTCString();
             }
 
             return callback(statErr, ret);

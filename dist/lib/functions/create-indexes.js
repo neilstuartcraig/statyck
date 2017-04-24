@@ -69,13 +69,12 @@ function createIndexes(items, numberOfItemsPerIndexPage, template, themeSettings
         const indexPathPrefix = outputDir; // NOTE: This is the path into which the index file will be written, not the HRef path prefix
 
         itemsArray.map((item, currentIndexNum) => {
-
             // TODO: sort the path prefix from config         
             (0, _createIndexMetadata2.default)(currentIndexNum, totalNumItems, "", indexMetadata => {
                 const context = {
                     items: item,
                     indexMetadata: indexMetadata,
-                    config: themeSettings
+                    theme: themeSettings
                 };
 
                 // Copy in additional context (excluding any clashes with existing context data)

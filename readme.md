@@ -6,7 +6,7 @@
 ## Overview
 A super simple, markdown-based, static blog generator. 
 
-`statyck` takes [Markdown](https://en.wikipedia.org/wiki/Markdown) files in a known directory/folder structure and generates a (template-able, via [Handlebars](http://handlebarsjs.com/)) set of blog posts and pages, each with optional assets (images etc.).
+`statyck` takes [Markdown](https://en.wikipedia.org/wiki/Markdown) files in a known directory/folder structure and generates a ([Handlebars](http://handlebarsjs.com/) template-able) set of blog posts and pages, each with optional assets (images etc.).
 
 
 ## Quickstart
@@ -25,7 +25,7 @@ statyck local
 You should then see a message (roughly) as follows:
 
 ```
-Local server running at http://127.0.0.1:8080/
+Local server running at http://127.0.0.1:8080/ - hit ctrl+c to stop
 ```
 
 So you can now open `http://127.0.0.1:8080` in your browser and you'll see a very basic, starter website.

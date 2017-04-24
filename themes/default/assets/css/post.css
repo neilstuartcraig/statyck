@@ -1,0 +1,31 @@
+.post_content
+{
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    max-width: 75em;
+}
+.post_content h1
+{
+    font-size: 1.4em;
+    margin-bottom: 0.25em;
+}
+.post_content h2
+{
+    font-size: 1.3em;
+    margin-bottom: 0.125em;
+}
+.post_content h3
+{
+    font-size: 1.2em;
+    margin-bottom: 0.1em;
+}
+.post_content h4
+{
+    font-size: 1.1em;
+    margin-bottom: 0.05em;
+}
+.post_dates
+{
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    font-size: 0.8em;
+    color: #777;
+}

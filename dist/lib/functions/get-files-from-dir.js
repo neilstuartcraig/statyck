@@ -27,13 +27,11 @@ function getFilesFromDir(dirName, fileExtension, callback) {
     _fs2.default.readdir(dirName, (readErr, fileList) => {
         // Defaults
         let err = null;
-        let files = [];
+        let files = []; // Default to empty array so that we always have an array to work with
 
         if (readErr) {
             err = readErr;
         } else {
-
-            // SPLIT            
             // Filter the dir listing to include only file with matching file extension
             const filteredFiles = fileList.filter(filename => {
                 // Note that fileExtension should include a leading . if the filenames require it
@@ -46,8 +44,9 @@ function getFilesFromDir(dirName, fileExtension, callback) {
                 return matches === null ? false : true;
             });
 
-            // SPLIT
-            files = filteredFiles.sort((a, b) => {
+            // Sort files by birthtime (creation date/time)
+            files = filteredFiles;
+            files.sort((a, b) => {
                 const pathA = _path2.default.join(dirName, a);
                 const aCTime = _fs2.default.statSync(pathA).birthtime;
                 const aCTimeTS = new Date(aCTime).getTime();
@@ -56,7 +55,10 @@ function getFilesFromDir(dirName, fileExtension, callback) {
                 const bCTime = _fs2.default.statSync(pathB).birthtime;
                 const bCTimeTS = new Date(bCTime).getTime();
 
-                return bCTimeTS - aCTimeTS;
+                // NOTE: b - a gives reverse-order sort (i.e. newest first)
+                const ret = bCTimeTS - aCTimeTS;
+
+                return ret;
             });
         }
 

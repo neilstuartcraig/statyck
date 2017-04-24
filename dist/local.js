@@ -56,14 +56,19 @@ function local(projectBaseDirectory, callback) {
                     res.statusCode = 404;
                     res.end();
                 } else {
-                    const response = data.toString("utf8");
-                    res.end(response);
+                    // Content-Type header
+                    const ext = _path2.default.extname(reqPath);
+                    const contentType = _statyckAppConfig.production.mimeTypes[ext] || _statyckAppConfig.production.defaultMimeType;
+                    res.setHeader("Content-Type", contentType);
+
+                    // Output the content we read from disc, in binary form (from the Buffer which readFile() returns)
+                    res.end(data, "binary");
                 }
             });
         });
 
         // Issue a (hopefully useful message to the user so they can click on it or copy/paste)
-        console.log(`Local server running at http://127.0.0.1:${statyckConfig.general.localServerPort}/`);
+        console.log(`Local server running at http://127.0.0.1:${statyckConfig.general.localServerPort}/ - hit ctrl+c to stop`);
 
         server.listen(statyckConfig.general.localServerPort);
     });

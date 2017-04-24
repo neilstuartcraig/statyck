@@ -45,8 +45,8 @@ function createIndex(context, templateString, currentIndexNumber, totalNumberOfI
     const template = _handlebars2.default.compile(templateString);
     const ctx = context;
     ctx.indexes = {
-        current: currentIndexNumber,
-        total: totalNumberOfIndexes
+        current: currentIndexNumber + 1, // NOTE: "+1" makes the index 1-based (rather than 0-based)
+        total: totalNumberOfIndexes + 1 // NOTE: "+1" makes the index 1-based (rather than 0-based)
     };
     const outputData = template(ctx);
 

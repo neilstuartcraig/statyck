@@ -1,5 +1,16 @@
 # statyck changelog
 
+## v1.4.9
+* Fix: Pagination wording
+* Fix: Finalise default theme (simple form)
+* Fix: Serve common asset types under correct mime type (Content-Type header)
+* Fix: Make index numbering 1-based (rather than 0-based), also fixed tests accordingly
+* Fix: Date created/modified were the same
+* Fix: Date formats in metadata
+* Fix: inconsistent ordering of items in indexes
+* Fix: Readme output example for local server
+* Fix: Serving of image assets via local server
+
 ## v1.4.8
 * Fix: Delete PoC directory as it's no longer needed
 

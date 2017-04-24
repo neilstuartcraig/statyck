@@ -1,0 +1,17 @@
+Praesent egestas nisl ut tempus tincidunt. Morbi eros velit, pharetra ac mauris vel, rutrum sodales lorem. Quisque in elementum elit, vel interdum tellus. Vivamus arcu justo, maximus et nunc et, gravida pharetra dolor. Sed quis rutrum est, at molestie orci. Suspendisse id suscipit lacus. Curabitur sed ex sem. Nunc rutrum nisi in augue molestie convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce at ex aliquet, consequat tortor a, accumsan odio. Nulla feugiat consectetur nunc, sed bibendum sem fringilla vel.
+
+Aliquam nisl nunc, laoreet ac mauris nec, dignissim efficitur arcu. Morbi ornare arcu at magna gravida, faucibus porttitor lorem lacinia. Praesent lacinia id odio quis fringilla. Morbi in molestie odio, in viverra diam. Pellentesque vel odio ut neque sollicitudin auctor. Maecenas pretium venenatis lacus vel porta. Quisque ante mi, mollis at ante sit amet, venenatis commodo nisi. Proin non tortor tellus. Nulla facilisi. Fusce sed leo sed lorem sollicitudin pharetra non sit amet est.
+
+Nunc aliquam risus dictum, varius justo sed, commodo lacus. Sed sed maximus est. Phasellus vitae mi blandit, imperdiet massa non, maximus ipsum. Fusce scelerisque tristique erat vitae molestie. Vestibulum tempor odio vel aliquet consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin sit amet metus pharetra nunc consectetur blandit sed at neque. Proin vitae nisi egestas, molestie neque id, egestas mauris. Phasellus euismod est at finibus tincidunt. Pellentesque non nisl sit amet nulla placerat luctus quis et tellus. Etiam pulvinar sapien ut sem malesuada, nec rutrum ex vehicula. Curabitur non libero neque.
+
+This is a badger:  
+![Badger](./assets/images/badger.jpg "Yep, it's a badger JPEG!")  
+![Badger](./assets/images/badger2.jpg "Yep, it's a badger JPEG! 2")  
+![Badger](./assets/images/badger.png "Yep, it's a badger PNG!")
+
+
+Cras scelerisque urna eros, eu tincidunt lorem imperdiet at. Aenean pellentesque porta mi. Proin nisl mi, ultricies a justo nec, lobortis commodo ligula. Morbi venenatis molestie elit, sit amet commodo lacus ullamcorper nec. Pellentesque nisi justo, elementum eu gravida ut, volutpat in massa. Vestibulum eget mattis ex. Pellentesque eleifend pulvinar accumsan. Nullam suscipit commodo pharetra. Praesent elementum, massa eget mollis commodo, libero neque aliquam purus, a posuere dui odio quis arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+Fusce eget lectus id tellus pharetra fermentum vel sed dolor. Sed dapibus lorem nulla. Ut eu molestie risus, sed pharetra urna. Duis vitae pellentesque enim, vitae gravida tellus. Aenean ornare velit non lacus maximus malesuada. Nulla viverra, nisi ut scelerisque feugiat, nulla tellus gravida risus, ut tincidunt diam sem sed eros. Vestibulum turpis mi, dictum at laoreet quis, efficitur rutrum turpis.
+
+End.

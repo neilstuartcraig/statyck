@@ -1,0 +1,16 @@
+body
+{
+    font: 100 95% helvetica,san-serif;
+
+    display: flex;
+    flex-direction: column;
+}
+a
+{
+    text-decoration: none;
+    color: #37464f;
+}
+p
+{
+    margin-bottom: 1em;
+}

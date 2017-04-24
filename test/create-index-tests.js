@@ -34,7 +34,7 @@ test.cb("createIndex with valid inputs (no output file)", (t) =>
   const writeOutputFile = false;
 
   // Outputs
-  const expectedOutput = `start. num = ${context.num}. obj.str = ${context.obj.str}. ci = ${currentIndexNumber}. ti = ${totalNumberOfIndexes}. end`;
+  const expectedOutput = `start. num = ${context.num}. obj.str = ${context.obj.str}. ci = ${currentIndexNumber + 1}. ti = ${totalNumberOfIndexes + 1}. end`;
 
   createIndex(context, templateString, currentIndexNumber, totalNumberOfIndexes, outputPathAndFilename, writeOutputFile, (err, res) =>
   {
@@ -63,7 +63,7 @@ test.cb("createIndex with valid inputs (with output file)", (t) =>
   const writeOutputFile = true;
 
   // Outputs
-  const expectedOutput = `start. num = ${context.num}. obj.str = ${context.obj.str}. ci = ${currentIndexNumber}. ti = ${totalNumberOfIndexes}. end`;
+  const expectedOutput = `start. num = ${context.num}. obj.str = ${context.obj.str}. ci = ${currentIndexNumber + 1}. ti = ${totalNumberOfIndexes + 1}. end`;
 
   createIndex(context, templateString, currentIndexNumber, totalNumberOfIndexes, outputPathAndFilename, writeOutputFile, (err, res) =>
   {

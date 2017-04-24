@@ -1,28 +1,61 @@
 <!doctype html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-  <title>{{content.title}} - {{theme.title}}</title>
-  <link rel="stylesheet" href="/assets/css/main.css?v=1.0">
-</head>
+    <title>{{content.title}} - {{theme.title}}</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/reset.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/assets/css/generics.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main-header.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/assets/css/page.css?v=1">
+  </head>
 
-<body>
-
-  <header>
-    {{theme.title}}<br />
-    {{theme.strapline}}
+  <body>
+    <header class="main_header">
+      <section class="main_header_titles">
+          <h1 class="main_header_titles_name">
+            <a href="/">
+              {{theme.title}}
+            </a>
+          </h1>
+          <span class="main_header_titles_strapline">
+              {{theme.strapline}}
+          </span>
+      </section>
+      <section class="main_header_nav">
+          <section class="main_header_nav_pages">
+              {{{pagesIndexHTML}}}
+          </section>
+          <section class="main_header_nav_social">
+              <ul>
+                  <li>
+                      <a href="{{theme.social.twitterURL}}">
+                          <picture>
+                              <!--<source type="image/svg+xml" srcset="/assets/images/twitter.svg" width=20 height=20>-->
+                              <img src="/assets/images/twitter.svg" width="20" height="20" alt="Twitter" />
+                              <!--<img src="path/to/fallback.png" alt="Twitter">-->
+                          </picture>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{theme.social.githubURL}}">
+                          <img src="/assets/images/github.svg" width="20" height="20" alt="Github" />
+                      </a>
+                  </li>
+              </ul>
+          </section>
+      </section>
   </header>
 
-  <nav>
-    {{{pagesIndexHTML}}}
-  </nav>
-
-
-  Date created: {{content.metadata.dateCreated.string}}<br />
-  Date last modified: {{content.metadata.dateModified.string}}<br />
-
-  {{{content.HTML}}}
-</body>
+  <main>
+    <section class="page_content">
+      {{{content.HTML}}}
+    </section>
+    <section class="page_dates">
+      Date created: {{content.metadata.dateCreated.string}}<br />
+      Date last modified: {{content.metadata.dateModified.string}}<br />
+    </section>
+  </main>
+  </body>
 </html>

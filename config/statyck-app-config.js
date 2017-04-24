@@ -39,7 +39,21 @@ const production =
 
     // Config files
     userlandConfigDestinationDirectory: "statyck-config", // Directory (relative to project root directory) which will be created by init to copy the below userland config templates
-    userlandConfigTemplateSourceDirectory: "config-templates" // Directory (relative to this codebase root directory) in which userland config templates are stored
+    userlandConfigTemplateSourceDirectory: "config-templates", // Directory (relative to this codebase root directory) in which userland config templates are stored
+
+    // Local (content/theme dev/test) server
+    mimeTypes:
+    {
+        ".html": "text/html",
+        ".css": "text/css",
+        ".js": "application/javascript",
+        ".svg": "image/svg+xml",
+        ".jpg": "image/jpeg",
+        ".gif": "image/gif",
+        ".png": "image/png"
+        // NOTE: This is a minimal/starter list - no doubt we'll need to add more over time
+    },
+    defaultMimeType: "text/plain"
 };
 
 module.exports["production"] = production;

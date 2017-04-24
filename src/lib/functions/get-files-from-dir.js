@@ -10,7 +10,7 @@ function getFilesFromDir(dirName: string, fileExtension: string, callback: Funct
     {
         // Defaults
         let err = null;
-        let files = [];
+        let files = []; // Default to empty array so that we always have an array to work with
 
         if(readErr)
         {
@@ -18,9 +18,6 @@ function getFilesFromDir(dirName: string, fileExtension: string, callback: Funct
         }
         else
         {
-
-
-// SPLIT            
             // Filter the dir listing to include only file with matching file extension
             const filteredFiles = fileList.filter((filename) =>
             {
@@ -34,8 +31,9 @@ function getFilesFromDir(dirName: string, fileExtension: string, callback: Funct
                 return matches === null ? false : true;
             });
 
-// SPLIT
-            files = filteredFiles.sort((a, b) => 
+            // Sort files by birthtime (creation date/time)
+            files = filteredFiles;
+            files.sort((a, b) => 
             {
                 const pathA = path.join(dirName, a);
                 const aCTime = fs.statSync(pathA).birthtime;
@@ -45,10 +43,11 @@ function getFilesFromDir(dirName: string, fileExtension: string, callback: Funct
                 const bCTime = fs.statSync(pathB).birthtime;
                 const bCTimeTS = new Date(bCTime).getTime();
 
-                return bCTimeTS - aCTimeTS;
+                // NOTE: b - a gives reverse-order sort (i.e. newest first)
+                const ret = bCTimeTS - aCTimeTS;      
+
+                return ret;
             });
-
-
         }
 
         return callback(err, files);

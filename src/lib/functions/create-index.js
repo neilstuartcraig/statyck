@@ -14,12 +14,11 @@ function createIndex(context: Object, templateString: string, currentIndexNumber
     const ctx = context;
     ctx.indexes = 
     {
-        current: currentIndexNumber,
-        total: totalNumberOfIndexes
+        current: currentIndexNumber + 1, // NOTE: "+1" makes the index 1-based (rather than 0-based)
+        total: totalNumberOfIndexes + 1  // NOTE: "+1" makes the index 1-based (rather than 0-based)
     };
     const outputData = template(ctx);
     
-
 // TODO: Consider moving the file write into index - keep this fn testable without mocks, would also eliminate 2 x args
     if(writeOutputFile === true)
     {
@@ -32,7 +31,6 @@ function createIndex(context: Object, templateString: string, currentIndexNumber
     {
         return callback(null, outputData);
     }
-
 }
 
 module.exports = createIndex;

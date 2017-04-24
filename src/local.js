@@ -45,8 +45,13 @@ function local(projectBaseDirectory: string, callback: Function)
                 }
                 else
                 {
-                    const response = data.toString("utf8");
-                    res.end(response);                
+                    // Content-Type header
+                    const ext = path.extname(reqPath);                  
+                    const contentType = appConfig.mimeTypes[ext] || appConfig.defaultMimeType;
+                    res.setHeader("Content-Type", contentType);
+
+                    // Output the content we read from disc, in binary form (from the Buffer which readFile() returns)
+                    res.end(data, "binary");                
                 }
             });
         });
