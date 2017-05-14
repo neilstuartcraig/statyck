@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.5.1
+* Fix: Replace non-free images in example content with royalty-free image from https://pixabay.com/en/stonehenge-monument-air-clouds-2287980/
+
 ## v1.5.0
 * Feature: Move default theme to dedicated repo/package (https://github.com/neilstuartcraig/statyck-theme-default / statyck-theme-default), adjust readme accordingly
 

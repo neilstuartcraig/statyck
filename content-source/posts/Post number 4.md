@@ -4,8 +4,8 @@ Aliquam nisl nunc, laoreet ac mauris nec, dignissim efficitur arcu. Morbi ornare
 
 Nunc aliquam risus dictum, varius justo sed, commodo lacus. Sed sed maximus est. Phasellus vitae mi blandit, imperdiet massa non, maximus ipsum. Fusce scelerisque tristique erat vitae molestie. Vestibulum tempor odio vel aliquet consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin sit amet metus pharetra nunc consectetur blandit sed at neque. Proin vitae nisi egestas, molestie neque id, egestas mauris. Phasellus euismod est at finibus tincidunt. Pellentesque non nisl sit amet nulla placerat luctus quis et tellus. Etiam pulvinar sapien ut sem malesuada, nec rutrum ex vehicula. Curabitur non libero neque.
 
-This is a badger:  
-![Badger](./assets/images/badger.jpg "Yep, it's a badger JPEG!")  
+This is a photo of Stonehenge:  
+![Badger](./assets/images/stonehenge-2287980_960_720.jpg "Stonehenge")  
 
 Cras scelerisque urna eros, eu tincidunt lorem imperdiet at. Aenean pellentesque porta mi. Proin nisl mi, ultricies a justo nec, lobortis commodo ligula. Morbi venenatis molestie elit, sit amet commodo lacus ullamcorper nec. Pellentesque nisi justo, elementum eu gravida ut, volutpat in massa. Vestibulum eget mattis ex. Pellentesque eleifend pulvinar accumsan. Nullam suscipit commodo pharetra. Praesent elementum, massa eget mollis commodo, libero neque aliquam purus, a posuere dui odio quis arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
