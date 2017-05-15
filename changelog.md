@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.5.2
+* Remove: Unused postinstall script
+
 ## v1.5.1
 * Fix: Replace non-free images in example content with royalty-free image from https://pixabay.com/en/stonehenge-monument-air-clouds-2287980/
 

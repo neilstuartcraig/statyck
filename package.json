@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
@@ -24,7 +24,6 @@
     "show-report": "open coverage/index.html",
     "report": "npm run create-report && npm run show-report",
     "build": "./node_modules/babel-cli/bin/babel.js src/ --out-dir dist",
-    "post-install": "./scripts/post-install.js",
     "preversion": "npm run build && npm test && npm run create-report",
     "version": "npm run vuln-scan && git add -A",
     "postversion": "git push --follow-tags && npm publish",
