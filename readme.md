@@ -12,7 +12,7 @@ A super simple, markdown-based, static blog generator.
 ## Quickstart
 If you're familiar with node installation and the command line (and you're on a *nix-like system), run this in your shell:
 
-```
+```sh
 cd # Change to your home directory
 mkdir statyck-blog # Make a new directory to contain your new blog
 cd $_ # Change to the new blog directory

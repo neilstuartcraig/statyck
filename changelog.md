@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.5.4
+* Fix: Add missing sh annotation to quickstart shell example
+
 ## v1.5.3
 * Improve: readme quickstart - add comments
 
