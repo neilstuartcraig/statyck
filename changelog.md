@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.5.3
+* Improve: readme quickstart - add comments
+
 ## v1.5.2
 * Remove: Unused postinstall script
 

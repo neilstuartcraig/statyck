@@ -13,14 +13,14 @@ A super simple, markdown-based, static blog generator.
 If you're familiar with node installation and the command line (and you're on a *nix-like system), run this in your shell:
 
 ```
-cd 
-mkdir statyck-blog
-cd $_
-npm install statyck --production --global
-npm install statyck-theme-default --production >> /dev/null 2>&1
-statyck init
-statyck build
-statyck local
+cd # Change to your home directory
+mkdir statyck-blog # Make a new directory to contain your new blog
+cd $_ # Change to the new blog directory
+npm install statyck --production --global # Install Statyck
+npm install statyck-theme-default --production >> /dev/null 2>&1 # Install the default theme for Statyck
+statyck init # Initialise your new blog
+statyck build # Build your new blog
+statyck local # Run a local test instance of your blog so you can see it locally before deploying
 ```
 
 (note: you may need to omit the `>> /dev/null 2>&1` on non-*nix OS's e.g. Windows)
