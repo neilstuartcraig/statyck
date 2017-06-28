@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.6.1
+* Fix: Mising HTML minification options
+
 ## v1.6.0
 * Add: Automatic HTML minification
 * Update: Node dependencies

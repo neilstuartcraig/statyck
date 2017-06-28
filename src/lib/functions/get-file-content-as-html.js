@@ -24,7 +24,12 @@ function getFileContentAsHTML(filename: string, callback: Function)
         const HTMLString = marked(fileContents.toString("utf8"));
 
         // Minify the HTML we just produced
-        const HTMLStringMinified = minify(HTMLString);
+        // TODO: Make the options centrally define, including in tests
+        const HTMLStringMinified = minify(HTMLString, 
+        {
+            collapseWhitespace: true,
+            removeAttributeQuotes: true
+        });
 
         return callback(err, HTMLStringMinified);
     });
