@@ -5,6 +5,7 @@ import fs from "fs";
 
 // Deps - 3rd party
 import marked from "marked";
+import {minify} from "html-minifier";
 
 
 function getFileContentAsHTML(filename: string, callback: Function)
@@ -22,7 +23,10 @@ function getFileContentAsHTML(filename: string, callback: Function)
 // NOTE: This makes a collosal assumption that the files are ALL ALWAYS in UTF8
         const HTMLString = marked(fileContents.toString("utf8"));
 
-        return callback(err, HTMLString);
+        // Minify the HTML we just produced
+        const HTMLStringMinified = minify(HTMLString);
+
+        return callback(err, HTMLStringMinified);
     });
 }
 

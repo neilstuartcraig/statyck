@@ -1,5 +1,9 @@
 # statyck changelog
 
+## v1.6.0
+* Add: Automatic HTML minification
+* Update: Node dependencies
+
 ## v1.5.4
 * Fix: Add missing sh annotation to quickstart shell example
 

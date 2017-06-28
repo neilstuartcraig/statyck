@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
@@ -44,9 +44,10 @@
   "dependencies": {
     "fs-extra": "^2.0.0",
     "handlebars": "^4.0.6",
+    "html-minifier": "^3.5.2",
     "marked": "^0.3.6",
-    "yargs": "^7.0.1",
-    "snyk": "^1.25.2"
+    "snyk": "^1.25.2",
+    "yargs": "^7.0.1"
   },
   "devDependencies": {
     "ava": "^0.18.2",
