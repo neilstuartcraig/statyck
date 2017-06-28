@@ -29,7 +29,7 @@ function init(projectBaseDirectory, callback) {
         throw new TypeError("Value of argument \"callback\" violates contract.\n\nExpected:\nFunction\n\nGot:\n" + _inspect(callback));
     }
 
-    // create ./config/ dir
+    // create ./statyck-config/ dir in the blog root dir
     const configDir = _path2.default.join(projectBaseDirectory, _statyckAppConfig.production.userlandConfigDestinationDirectory);
     (0, _createDirRec2.default)(configDir, CDErr => {
         if (CDErr) {
@@ -51,13 +51,6 @@ function init(projectBaseDirectory, callback) {
                 if (CSErr) {
                     return callback(CSErr);
                 }
-
-                // Copy default theme into proj dir
-                const themeSourceDir = _path2.default.join(__dirname, "..", _statyckAppConfig.production.themesSourceDirectory, _statyckAppConfig.production.defaultThemeDirectory);
-                const themeDestinationDir = _path2.default.join(projectBaseDirectory, _statyckAppConfig.production.themesSourceDirectory, _statyckAppConfig.production.defaultThemeDirectory);
-                (0, _recCopyFiles2.default)(themeSourceDir, themeDestinationDir, TErr => {
-                    return callback(TErr);
-                });
             });
         });
     });

@@ -10,8 +10,11 @@ var _handlebars = require("handlebars");
 
 var _handlebars2 = _interopRequireDefault(_handlebars);
 
+var _htmlMinifier = require("html-minifier");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// 3rd party deps
 function createIndex(context, templateString, currentIndexNumber, totalNumberOfIndexes, outputPathAndFilename, writeOutputFile, callback) {
     if (!(context instanceof Object)) {
         throw new TypeError("Value of argument \"context\" violates contract.\n\nExpected:\nObject\n\nGot:\n" + _inspect(context));
@@ -48,7 +51,10 @@ function createIndex(context, templateString, currentIndexNumber, totalNumberOfI
         current: currentIndexNumber + 1, // NOTE: "+1" makes the index 1-based (rather than 0-based)
         total: totalNumberOfIndexes + 1 // NOTE: "+1" makes the index 1-based (rather than 0-based)
     };
-    const outputData = template(ctx);
+    const outputData = (0, _htmlMinifier.minify)(template(ctx), {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+    });
 
     // TODO: Consider moving the file write into index - keep this fn testable without mocks, would also eliminate 2 x args
     if (writeOutputFile === true) {
@@ -60,9 +66,6 @@ function createIndex(context, templateString, currentIndexNumber, totalNumberOfI
             return callback(null, outputData);
         }
 }
-
-// 3rd party deps
-
 
 module.exports = createIndex;
 

@@ -9,17 +9,9 @@ import path from "path";
 
 // 3rd party deps
 import test from "ava";
-import {minify} from "html-minifier";
 
 // Local deps
 import getFileContentAsHTML from "../src/lib/functions/get-file-content-as-html.js";
-
-// Yep - this is crap, it shou;dn't be statically defined
-const minifierOptions = 
-{
-  collapseWhitespace: true,
-  removeAttributeQuotes: true
-};
 
 // Valid args:
 test.cb("getFileContentAsHTML with valid inputs", (t) =>
@@ -29,7 +21,7 @@ test.cb("getFileContentAsHTML with valid inputs", (t) =>
 
   // Outputs
   // TODO: Make this array automatically populated, it's too brittle being hardcoded
-  const expectedOutput = minify("<h1 id=\"h1\">H1</h1>\n<p>Hello</p>\n", minifierOptions);
+  const expectedOutput = "<h1 id=\"h1\">H1</h1>\n<p>Hello</p>\n";
 
   getFileContentAsHTML(filename, (err, res) =>
   {

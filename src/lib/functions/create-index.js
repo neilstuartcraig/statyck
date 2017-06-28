@@ -5,7 +5,7 @@ import fs from "fs";
 
 // 3rd party deps
 import handlebars from "handlebars";
-
+import {minify} from "html-minifier";
 
 function createIndex(context: Object, templateString: string, currentIndexNumber: number, totalNumberOfIndexes: number, outputPathAndFilename: string, writeOutputFile: boolean, callback: Function)
 {
@@ -17,7 +17,11 @@ function createIndex(context: Object, templateString: string, currentIndexNumber
         current: currentIndexNumber + 1, // NOTE: "+1" makes the index 1-based (rather than 0-based)
         total: totalNumberOfIndexes + 1  // NOTE: "+1" makes the index 1-based (rather than 0-based)
     };
-    const outputData = template(ctx);
+    const outputData = minify(template(ctx),
+    {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+    });
     
 // TODO: Consider moving the file write into index - keep this fn testable without mocks, would also eliminate 2 x args
     if(writeOutputFile === true)

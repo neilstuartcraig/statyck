@@ -8,6 +8,8 @@ var _handlebars = require("handlebars");
 
 var _handlebars2 = _interopRequireDefault(_handlebars);
 
+var _htmlMinifier = require("html-minifier");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function createOutputFile(templateString, context, outputPathAndFilename, callback) {
@@ -30,8 +32,13 @@ function createOutputFile(templateString, context, outputPathAndFilename, callba
     const template = _handlebars2.default.compile(templateString);
     const outputData = template(context);
 
-    _fs2.default.writeFile(outputPathAndFilename, outputData, writeErr => {
-        return callback(writeErr, outputData);
+    const minifiedOutputData = (0, _htmlMinifier.minify)(outputData, {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+    });
+
+    _fs2.default.writeFile(outputPathAndFilename, minifiedOutputData, writeErr => {
+        return callback(writeErr, minifiedOutputData);
     });
 }
 

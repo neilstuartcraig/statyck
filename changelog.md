@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.6.2
+* Fix: HTML minification
+
 ## v1.6.1
 * Fix: Mising HTML minification options
 
