@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.6.5
+* Fix: (part 3) build failing due to missing dep
+
 ## v1.6.4
 * Fix: (part 2) snyk breaking node8/npm5 builds
 

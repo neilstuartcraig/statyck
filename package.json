@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
@@ -50,11 +50,11 @@
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-typecheck": "^3.9.0",
     "babel-preset-es2015-node6": "^0.4.0",
     "eslint-config-tdp": "^1.2.0",
-    "fs-extra": "^2.0.0",
     "nyc": "^10.1.2",
     "recursive-readdir": "^2.1.1",
     "rimraf": "^2.6.1"
