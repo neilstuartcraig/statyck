@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.6.4
+* Fix: (part 2) snyk breaking node8/npm5 builds
+
 ## v1.6.3
 * Fix: (hopefully) snyk causing build failures on travis with node 8 (and more importantly,. npm 5)
 

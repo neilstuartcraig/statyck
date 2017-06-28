@@ -4,7 +4,7 @@ os:
 language: node_js
 node_js:
   - "6"
-  # - "7" un-comment once v7 is !current
+  - "7"
   - "node"
 script:
   - npm test

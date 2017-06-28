@@ -1,6 +1,6 @@
 {
   "name": "statyck",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "A super simple, markdown-based, static blog generator",
   "main": "dist/bin.js",
   "bin": {
@@ -17,7 +17,6 @@
   },
   "scripts": {
     "start": "node .",
-    "vuln-scan": "./node_modules/.bin/snyk test",
     "lint": "node_modules/.bin/eslint ./*.js lib/*.js test/*.js",
     "test": "node_modules/.bin/nyc node_modules/.bin/ava test/*.js",
     "create-report": "./node_modules/.bin/nyc report --reporter=lcov --reporter=html",
@@ -26,9 +25,7 @@
     "build": "./node_modules/babel-cli/bin/babel.js src/ --out-dir dist",
     "preversion": "npm run build && npm test && npm run create-report",
     "version": "npm run vuln-scan && git add -A",
-    "postversion": "git push --follow-tags && npm publish",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "postversion": "git push --follow-tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -46,7 +43,6 @@
     "handlebars": "^4.0.6",
     "html-minifier": "^3.5.2",
     "marked": "^0.3.6",
-    "snyk": "^1.25.2",
     "yargs": "^7.0.1"
   },
   "devDependencies": {
@@ -62,6 +58,5 @@
     "nyc": "^10.1.2",
     "recursive-readdir": "^2.1.1",
     "rimraf": "^2.6.1"
-  },
-  "snyk": true
+  }
 }
