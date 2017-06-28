@@ -1,5 +1,8 @@
 # statyck changelog
 
+## v1.6.3
+* Fix: (hopefully) snyk causing build failures on travis with node 8 (and more importantly,. npm 5)
+
 ## v1.6.2
 * Fix: HTML minification
 
